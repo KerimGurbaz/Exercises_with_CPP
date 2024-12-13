@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    cout<<"Sevgilim"<<endl;
+    cout<<"Damla"<<endl;
 
 }//
 // Created by Krm on 13/12/2024.
