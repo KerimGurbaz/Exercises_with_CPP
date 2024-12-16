@@ -104,8 +104,6 @@ int main(){
     Circle c1;
     cout<<"Aire de c1 : "<<c1.area()<<endl;
     cout<<"Circonférence de c1: "<<c1.circumference()<<endl;
-
-
     //Modification du rayon de c1
 
     c1.setRadius(3.5);
