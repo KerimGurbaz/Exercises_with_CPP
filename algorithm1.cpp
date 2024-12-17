@@ -22,7 +22,6 @@ vector<int> vec = {4,2, 3, 1, 5};
 
     return 0;
 }
- */
 
 int main() {
     vector<int> source = {1,2,3,4,5};
@@ -36,3 +35,13 @@ copy(source.begin(), source.end(), destination.begin());
     }
 return 0 ;
 }
+
+ *
+
+ // Move vector elements move(first, last, result)
+fvv
+
+*
+*
+*
+ */
