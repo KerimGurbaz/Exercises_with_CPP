@@ -104,14 +104,7 @@ vector<int> vec1 ={1,3,5};
     cout<<endl;
 }
 
- */
-
-
-#include <algorithm>
-#include <vector>
-#include <iostream>
-using namespace std;
-
+//Replace vector Element
 int main(){
 // display thr vector before replacement
     vector<int> vec = {4,2, 3, 2, 5, 6, 2};
@@ -131,6 +124,38 @@ cout<<"before"<<endl;;
 cout<<endl;
 
 }
+
+ */
+
+
+#include <algorithm>
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    vector<int> vec = {4,3,2,3,5,7,8,2,22,12,2,45};
+
+    cout<<"Before: "<<endl;
+    for(int num  : vec) {
+        cout<<num<<" ";
+    }
+
+    cout<<endl;
+
+    remove(vec.begin(), vec.end(), 2);
+
+    for(int num : vec) {
+        cout<<num<< " ";
+    }
+
+
+
+
+    return 0;
+}
+
 
 
 
