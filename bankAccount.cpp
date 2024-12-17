@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <xmmintrin.h>
 using namespace std;
 
 class BankAccount {
@@ -85,15 +86,53 @@ public:
         cout<<"Numero de compte : "<<accountNumber<<endl;
         cout<<"Solde $"<< fixed<<setprecision(2)<<balance<<endl;
     }
-
-    int main() {
-
-
-
-        return 0;
-    }
-
-
-
-
 };
+
+int main() {
+    // creation d'un objet BankAccount
+    cout<<"Creation de compte1 avec constructeur par defaut"<<endl;
+    BankAccount compte1;
+    compte1.displayInfo();
+
+    //Modification des attributs de compte1
+    cout<<"Mise a jour des informations de compte1"<<endl;
+    compte1.setAccountNumber("ACC123456");
+    compte1.setBalance(500.0);
+    compte1.displayInfo();
+
+    cout << "-------------------------------------------" << endl;
+
+    // Dépôt et retrait d'argent sur compte1
+
+    cout << "Effectuer un dépôt de $150.75 sur compte1:" << endl;
+    compte1.deposit(150.75);
+    compte1.displayInfo();
+    cout << "Effectuer un retrait de $100.50 sur compte1:" << endl;
+    compte1.withdraw(100.50);
+    compte1.displayInfo();
+
+    cout << "Effectuer un retrait de $600.00 sur compte1 (solde insuffisant):" << endl;
+    compte1.withdraw(600.00); // Devrait afficher une erreur
+
+    cout << "-------------------------------------------" << endl;
+
+    // Création d'un objet BankAccount en utilisant le constructeur paramétré
+    cout << "Création de compte2 avec le constructeur paramétré:" << endl;
+    BankAccount compte2("ACC654321", 1000.0);
+    compte2.displayInfo();
+
+    cout << "-------------------------------------------" << endl;
+
+    // Dépôt et retrait d'argent sur compte2
+    cout << "Effectuer un dépôt de $300.00 sur compte2:" << endl;
+    compte2.deposit(300.00);
+    compte2.displayInfo();
+
+    cout << "Effectuer un retrait de $50.00 sur compte2:" << endl;
+    compte2.withdraw(50.00);
+    compte2.displayInfo();
+
+
+    return 0;
+}
+
