@@ -1,7 +1,9 @@
 //
 // Created by Krm on 17/12/2024.
 //
-#include <iostream>
+
+/*
+ * #include <iostream>
 #include <string>
 using namespace std;
 
@@ -87,6 +89,96 @@ int main() {
 
 return 0;
 
+}
+
+ */
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Car {
+private:
+    string marque, model;
+    int anne;
+
+
+public:
+    //constructeur par defaut
+    Car(): marque("inconnu"), model("inconnu"), anne(0) {
+        cout<<"constructeur par defeut, marque: "
+        <<marque<<", model: "
+        <<model<<", anne: "
+        <<anne<<endl;
+    }
+
+    //constructeur par parametre
+
+    Car(string mar, string mod, int a ): marque(mar),model(mod), anne(a) {
+        cout<<"constructeur par parametre, marque: "
+        <<marque<<", model: "
+        <<model<<", anne: "
+        <<anne<<endl;
+    }
+
+    void setMarque(string mar) {
+        marque=mar;
+        cout<<"marque mis a jour à"<< marque<<endl;
+    }
+
+    string getMarque() const {
+        return marque;
+    }
+
+    void setModel(string mod) {
+        model =mod;
+        cout<<"Model mis a jour à"<< model<<endl;
+    }
+
+    string getModel()const {
+        return model;
+    }
+
+    void setAge( int a) {
+        anne =a;
+        cout<<"anne mis a jour à "<<anne<<endl;
+    }
+
+    int getAnne()const {
+        return anne;
+    }
+
+    void displayInfo() const {
+        cout<<"l'information de car:\n marque : "
+        <<marque<<"\nmodel : "<<model
+        <<"\n year : "<<anne<<endl;
+    }
+};
+
+int main() {
+    Car car1;
+    cout<<"Création de person1 avec le constructeur par défaut" <<endl;
+    car1.displayInfo();
+
+    cout<<"-------------------------------------------"<<endl;
+
+    car1.setMarque("Toyota");
+    car1.setModel("Yaris");
+    car1.setAge(2008);
+    car1.displayInfo();
+
+    cout<<"-------------------------------------------"<<endl;
+
+    Car car2;
+    car2.setMarque("Hundai");
+    car2.setModel("Getz");
+    car2.setAge(2005);
+
+
+    cout<<((car1.getAnne() < car2.getAnne()) ? "la première voiture est plus ancienne":"la deuxième voiture est plus ancienne") <<endl;
+
+
+    return 0;
 }
 
 
