@@ -153,8 +153,18 @@ public:
         <<marque<<"\nmodel : "<<model
         <<"\n year : "<<anne<<endl;
     }
+    //friend ostream& operator<<(ostream& os, const Car& car);
+
+
 };
 
+//Surrcharge de l'operateur <<pour afficher les informations d'une car
+ostream& operator<<(ostream& os, const Car& car) {
+    os<<car.getMarque()
+    <<car.getModel()
+    <<car.getAnne();
+    return os;
+}
 int main() {
     Car car1;
     cout<<"Création de person1 avec le constructeur par défaut" <<endl;
@@ -177,6 +187,10 @@ int main() {
 
     cout<<((car1.getAnne() < car2.getAnne()) ? "la première voiture est plus ancienne":"la deuxième voiture est plus ancienne") <<endl;
 
+    // Utilisation de l'opérateur << pour afficher les informations des voitures
+    cout << "Affichage des informations avec l'opérateur << :" << endl;
+    cout << car1 << endl;
+    cout << car2 << endl;
 
     return 0;
 }
