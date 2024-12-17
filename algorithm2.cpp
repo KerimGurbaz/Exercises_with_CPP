@@ -76,6 +76,33 @@ cout<<"vec2 : ";
     }
     cout<<endl;
 }
+*
+* // Merge two vectors
+int main() {
+vector<int> vec1 ={1,3,5};
+    vector<int> vec2 = {1,2,7};
+    vector<int> result(6);
+
+    cout<<"Before merge v1 :";
+    for(int num : vec1) {
+        cout<<num<<" ";
+    }
+
+    cout<<"\nBefore merge v2 :";
+    for(int num : vec2) {
+        cout<<num<<" ";
+    }
+    cout<<endl;
+
+    cout<<"perform merge operation"<<endl;
+    merge(vec1.begin(), vec1.end(),vec2.begin(), vec2.end(), result.begin() );
+    cout<<"After merge : "<<endl;
+    cout<<"result: ";
+    for(int num: result) {
+        cout<<num<< " ";
+    }
+    cout<<endl;
+}
 
  */
 
@@ -85,5 +112,25 @@ cout<<"vec2 : ";
 #include <iostream>
 using namespace std;
 
-//
+int main(){
+// display thr vector before replacement
+    vector<int> vec = {4,2, 3, 2, 5, 6, 2};
+cout<<"before"<<endl;;
+    for(int num : vec) {
+        cout<<num<<" ";
+    }
+    cout<<endl;
+
+    //replace 2 with 99
+    replace(vec.begin(), vec.end(), 2, 99);
+
+    cout<<"after : ";
+    for(int num : vec) {
+        cout<<num<<" ";
+    }
+cout<<endl;
+
+}
+
+
 
