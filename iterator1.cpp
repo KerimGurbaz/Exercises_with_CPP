@@ -84,9 +84,6 @@ int main() {
 }
 
 
-
- */
-
 #include <iostream>
 #include <vector>
 
@@ -129,4 +126,58 @@ int main() {
 
 
 }
+
+
+ */
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+template<typename iterator>
+void display(iterator first, iterator last) {
+    cout<<"[";
+    for(iterator it = first; it != last; ++it) {
+        cout<<*it<<" ";
+    }
+    cout<<"]\n";
+}
+
+template<typename T>
+void display_details(const vector<T>& v) {
+    cout<<"taille : "<<v.size()<<endl;
+    cout<<"capacity : "<< v.capacity()<<endl;
+    cout<<"data : "<<v.data()<<endl;
+}
+
+int main() {
+    vector<int> v {1,2,3,4};
+    display(v.cbegin(), v.cend());
+
+    vector<int>::const_iterator begin =v.cbegin();
+    vector<int>::const_iterator end = v.cend();
+    cout<<endl;
+
+    cout<<"AVANT invertion"<<endl;
+    display_details(v);
+    v.push_back(5);
+
+    cout<<"APRES insertion"<<endl;
+    display_details(v);
+
+    cout<<"iterations" <<endl;
+    display(v.cbegin(), v.cend());
+    display(begin, end);
+cout<<endl;
+
+    cout<<"v.begin : "<<&(*(v.cbegin()))<<endl;
+    cout << "begin    : " << &(*begin)      << endl;
+
+
+    return 0;
+}
+
+
+
+
 
