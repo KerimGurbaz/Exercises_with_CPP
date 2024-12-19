@@ -47,8 +47,6 @@ int main() {
     return 0;
 }
 
- */
-
 #include <iostream>
 #include <vector>
 
@@ -78,10 +76,56 @@ int main() {
     // Ajout d'un élément au vector
     v.push_back(5);
 
+
     display(v.cbegin(), v.cend());
 
     display(begin, end);
 
+}
+
+
+
+ */
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    vector<int> v = {10, 20, 30};
+
+    // iterator avant modification
+    vector<int> :: iterator it_begin = v.begin();
+    vector<int> ::iterator it_end = v.end();
+    cout<<"avant modification du contenu de vecteur : "<<endl;
+    for(vector<int>::iterator it = v.begin(); it != v.end(); ++it) {
+        cout<<*it<<" ";
+    }
+    cout<<endl;
+    cout<<"Adresse de debut : "<<&(*it_begin)<<endl;
+    cout<<"Adresse de fin : "<<&(*--it_end)<<endl;
+
+    //Modification du vector(ajout d'éléments)
+    v.push_back(40);
+    v.push_back(50);
+
+    cout<<"Apres modification du coontenu du vector : ";
+    for(vector<int>::iterator it =v.begin();it !=v.end(); ++it) {
+        cout<<*it<<" ";
+    }
+
+    cout<<"\nNouvelle adresse de debut : "<<&(*v.begin())<<"\n";
+    cout<<"Nouvelle adresse de fin : "<<&(*--v.end());
+
+    //Tentative d'utilisation des anciens itérateurs(DANGER)
+    cout<<"\nnTentative d'utilisation des ancien itérateurs (comportement indefinie)"<<endl;
+    try {
+        cout<<"Ancien itérateur debut : "<<*it_begin<<endl;
+        cout<<"Ancien itérateur fin : "<<*(--it_begin)<<endl;
+    }catch (const::exception& e) {
+        cerr<<"Exception : "<<e.what()<<endl;
+    }
 
 
 }
