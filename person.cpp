@@ -5,7 +5,8 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
+/*
+*
 //Declaration de classe person
 class Person {
 private:
@@ -78,3 +79,8 @@ int main() {
 
     return 0;
 }
+ */
+
+
+
+
