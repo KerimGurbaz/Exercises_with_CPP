@@ -50,6 +50,8 @@ int main() {
 #include <vector>
 #include <algorithm>
 using namespace std;
+
+
 template<typename T>
 vector<typename vector<T>::const_iterator> vec_iter_val(const vector<T> & vecteur, const T& valeurRechercee) {
     vector<typename vector<T>::const_iterator> vectorIterateurs;
@@ -69,4 +71,41 @@ vector<typename vector<T>::const_iterator> vec_iter_val(const vector<T> & vecteu
 
     return vectorIterateurs;
     }
+
+int main() {
+    // Déclaration d'un vecteur constant d'entiers
+    const vector<int> v {1, 2, 3, 2, 4, 2, 2, 6, 2};
+
+    // valeurà rechercher
+    int valeur = 2;
+
+    //Appel de la fonction vec_iter
+    vector<vector<int>::const_iterator> vecIterateurs = vec_iter_val(v, valeur );
+
+    //Affichage des resultats
+    cout<<"Vecteur d'entiers: [";
+    for(size_t i =0; i < v.size(); ++i) {
+        cout<<v[i];
+        if(i != v.size() -1 ) cout<<", ";
+    }
+    cout<<"]";
+
+    cout << "Vecteur d'itérateurs pointant vers la valeur " << valeur << " : [";
+    for(size_t i = 0; i < vecIterateurs.size(); ++i) {
+        cout<<*(vecIterateurs[i]);
+        if(i != vecIterateurs.size()- 1 )cout<<", ";
+    }
+    cout<<"]"<<endl;
+
+    // Optionnel : Afficher les indices des itérateurs trouvés
+
+    cout << "Indices des occurrences de " << valeur << " : [";
+    for(size_t i = 0; i<vecIterateurs.size() ; ++i) {
+        cout<<distance(v.begin(), vecIterateurs[i]);
+        if(i != vecIterateurs.size() - 1 ; cout<<", ");
+    }
+    cout<<"]"<<endl;
+
+    return 0;
+}
 
