@@ -3,13 +3,13 @@
 //
 
 
+
+/*
 #include <iostream>
 #include <vector>
 using namespace std;
 #include <algorithm>
-
-
-template<typename T>
+* template<typename T>
 vector<typename vector<T>::const_iterator> vect_iter_val(const vector<T>& vec, const T& val) {
     vector<typename vector<T>::const_iterator> result;// vecteur pour stocker les iterateurs
     for(auto it = vec.begin(); it != vec.end() ; ++it) {
@@ -43,9 +43,30 @@ int main() {
         cout<<distance(v.begin(), it )<< " "; // Affiche la position de chaque iterateur
     }
 
-
-
-
-
-
 }
+ */
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+template<typename T>
+vector<typename vector<T>::const_iterator> vec_iter_val(const vector<T> & vecteur, const T& valeurRechercee) {
+    vector<typename vector<T>::const_iterator> vectorIterateurs;
+
+    // Itérateur pour parcourir le vecteur
+    auto it = vecteur.cbegin();
+
+    // Boucle pour trouver toutes les occurrences de 'valeurRecherchee'
+
+    while(it != vecteur.cend()) {
+        it = find(it, vecteur.cend(), valeurRechercee);
+        if(it != vecteur.cend()) {
+            vectorIterateurs.push_back(it);
+            ++it;
+        }
+    }
+
+    return vectorIterateurs;
+    }
+
