@@ -134,12 +134,6 @@ int main() {
     cout<<n<<endl;
 }
 
- */
-
-
-#include <iostream>
-using namespace std;
-
 template<typename T>
 T maxValue( const T& a, const T& b) {
     T result = (a > b ? a : b);
@@ -154,6 +148,58 @@ int main() {
    cout<< Double;
 
 }
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+template<typename T>
+T sumArray(const vector<T>& vec) {
+    T somme =0; // oou T somme =T();
+    for(size_t i = 0; i<vec.size(); ++i) {
+        somme += vec[i];
+    }
+
+    return somme;
+}
+
+int main() {
+
+    vector<int> myVec = {1,2,3,4,5};
+
+
+    cout<< sumArray(myVec)<<endl;
+}
+ */
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <numeric> // pour std: accumulate
+using namespace std;
+
+template<typename T>
+T sumArray (const vector<T>& vec) {
+    return accumulate(vec.begin(), vec.end(), T());
+}
+
+int main() {
+
+
+
+
+    vector<string> vecString = {"Bonjour", " ", "le", " ", "monde"};
+
+
+   auto resultat = sumArray(vecString);
+
+    // Affichage du résultat
+        cout << "La somme des éléments du vecteur est : " << resultat << endl;
+
+    return 0;
+}
+
+
 
 
 
