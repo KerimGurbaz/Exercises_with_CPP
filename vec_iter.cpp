@@ -108,10 +108,7 @@ int main() {
 
     return 0;
 }
-
-
- */
-
+//Fonction Template pour Échanger Deux Valeurs (swap)
 #include <iostream>
 using namespace std;
 
@@ -135,6 +132,27 @@ int main() {
     cout<<"apres: "<<endl;
     cout<<m<<endl;
     cout<<n<<endl;
+}
+
+ */
+
+
+#include <iostream>
+using namespace std;
+
+template<typename T>
+T maxValue( const T& a, const T& b) {
+    T result = (a > b ? a : b);
+    return result;
+}
+int main() {
+
+    int max =maxValue (3, 333);
+
+    auto  Double =maxValue (4.3, 3.4);
+    cout<<max<<endl;
+   cout<< Double;
+
 }
 
 
