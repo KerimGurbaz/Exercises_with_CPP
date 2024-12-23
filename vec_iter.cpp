@@ -245,7 +245,27 @@ int main() {
 #include <vector>
 #include <string>
 #include <numeric> // pour std: accumulate
+#include <algorithm>
 using namespace std;
+
+template<typename container1, typename container2>
+bool areEqualContainers(const vector<container1>& vec1, const vector<container2>& vec2) {
+    return ((vec1.size() == vec2.size()) && equal(vec1.begin(), vec1.end(), vec2.begin()));
+}
+
+int main() {
+    vector<int> vecA = {1,2,3,4};
+    vector<int> vecB = {1,2,3,4};
+    vector<int> vecC = {1,2,3,44};
+
+    cout<<areEqualContainers(vecA, vecB);
+    cout<<"\n"<<areEqualContainers(vecC, vecB)<< endl;
+
+
+
+
+    return 0;
+}
 
 
 
