@@ -170,6 +170,24 @@ int main() {
 
     cout<< sumArray(myVec)<<endl;
 }
+
+template<typename T>
+T sumArray (const vector<T>& vec) {
+    return accumulate(vec.begin(), vec.end(), T());
+}
+
+int main() {
+    vector<string> vecString = {"Bonjour", " ", "le", " ", "monde"};
+
+
+   auto resultat = sumArray(vecString);
+
+    // Affichage du résultat
+        cout << "La somme des éléments du vecteur est : " << resultat << endl;
+
+    return 0;
+}
+
  */
 
 #include <iostream>
@@ -179,22 +197,24 @@ int main() {
 using namespace std;
 
 template<typename T>
-T sumArray (const vector<T>& vec) {
-    return accumulate(vec.begin(), vec.end(), T());
+void reverseArray(vector<T> & vec) {
+    auto begin = vec.begin();
+
+    auto end = vec.end() -1;
+    while(begin < end) {
+        swap(*begin, * end);
+        begin++;
+        end--;
+    }
 }
-
 int main() {
+    vector<int> vecInt = {1, 2, 3, 4, 5};
 
+    reverseArray(vecInt);
 
-
-
-    vector<string> vecString = {"Bonjour", " ", "le", " ", "monde"};
-
-
-   auto resultat = sumArray(vecString);
-
-    // Affichage du résultat
-        cout << "La somme des éléments du vecteur est : " << resultat << endl;
+    for(auto const & i : vecInt) {
+        cout<<i<< " ";
+    }
 
     return 0;
 }
