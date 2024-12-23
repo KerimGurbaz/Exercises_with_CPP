@@ -188,14 +188,6 @@ int main() {
     return 0;
 }
 
- */
-
-#include <iostream>
-#include <vector>
-#include <string>
-#include <numeric> // pour std: accumulate
-using namespace std;
-
 template<typename T>
 void reverseArray(vector<T> & vec) {
     auto begin = vec.begin();
@@ -218,6 +210,47 @@ int main() {
 
     return 0;
 }
+template<typename T>
+bool areEqual(const vector<T>& vec1,const vector<T>& vec2) {
+
+    if(vec1.size() == vec2.size()){
+           for(size_t i =0 ; i<vec1.size() ; i++) {
+        if(!(vec1[i] == vec2[i])) {
+            return false;
+        }
+    }
+    }else {
+        return false;
+    }
+
+    return true;
+}
+
+
+int main() {
+    vector<int> vecA = {1, 2, 3};
+    vector<int> vecB = {1, 2, 3};
+    vector<int> vecC = {1, 2, 4};
+
+    bool result1 = areEqual(vecA, vecB); // result1 = true
+    bool result2 = areEqual(vecA, vecC); // result2 = false
+
+    cout<<result2;
+
+    return 0;
+}
+ */
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <numeric> // pour std: accumulate
+using namespace std;
+
+
+
+
+
 
 
 
