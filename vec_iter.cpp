@@ -44,7 +44,7 @@ int main() {
     }
 
 }
- */
+
 
 #include <iostream>
 #include <vector>
@@ -108,4 +108,34 @@ int main() {
 
     return 0;
 }
+
+
+ */
+
+#include <iostream>
+using namespace std;
+
+template<typename T>
+void swapValues(T& a, T& b) {
+    T tem = a;
+    a = b;
+    b = tem;
+}
+int main() {
+    int x = 5;
+    int  y= 10;
+
+    double m = 1.5, n = 2.5;
+    swapValues(m, n);
+    cout<<"avant: "<<endl;
+    cout<<x<<endl;
+    cout<<y<<endl;
+
+     swapValues(x,y);
+    cout<<"apres: "<<endl;
+    cout<<m<<endl;
+    cout<<n<<endl;
+}
+
+
 
