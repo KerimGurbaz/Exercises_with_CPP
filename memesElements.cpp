@@ -8,7 +8,31 @@
 using namespace std;
 
 
-template <typename T>
+template<typename T>
+T myMax( const T& var1, const T& var2) {
+    if (var1> var2) {
+        return var1;
+    }else if(var2 > var1) {
+        return var2;
+    }else {
+        cout<<"les valeur sont memes. ";
+    }
+}
+
+int main() {
+    cout<<myMax(1123, 1123);
+
+    return 0;
+}
+
+
+
+
+
+
+/*
+ *
+*template <typename T>
 void mySwap( T& var1, T& var2) {
     T temp = var1;
     var1 = var2;
@@ -37,11 +61,6 @@ int main() {
 
     return 0;
 }
-
-
-
-/*
- *
 *
 template<typename T>
 bool meme_elements(vector<T> vec1, vector<T> vec2) {
