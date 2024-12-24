@@ -7,7 +7,41 @@
 #include <algorithm>
 using namespace std;
 
+//Affichage d'un Vecteur
+template<typename T>
+void myVec(const vector<T>& vec) {
+    for(const auto& elem : vec) {
+        cout << elem << " ";
+    }
+}
 
+int main() {
+
+    vector<int> vec = {1,2,3,4,5,6};
+
+    myVec(vec);
+
+    return 0;
+}
+
+
+
+
+
+/*
+*
+//minimum de Deux Valeurs
+template<typename T>
+T myMin( const T& var1, const T& var2) {
+   return (var1 < var2 ? var1 : var2);
+}
+
+int main() {
+    cout<<myMin(11111, 1123);
+
+    return 0;
+}
+* //Maximum de Deux Valeurs
 template<typename T>
 T myMax( const T& var1, const T& var2) {
     if (var1> var2) {
@@ -24,13 +58,11 @@ int main() {
 
     return 0;
 }
-
-
-
-
-
+ */
 
 /*
+ *
+ *
  *
 *template <typename T>
 void mySwap( T& var1, T& var2) {
