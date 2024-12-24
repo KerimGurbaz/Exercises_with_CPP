@@ -8,6 +8,41 @@
 using namespace std;
 
 
+template <typename T>
+void mySwap( T& var1, T& var2) {
+    T temp = var1;
+    var1 = var2;
+    var2 = temp;
+};
+
+int main() {
+
+    int a = 3;
+    int b = 5;
+
+    string str1 ="krm";
+    string str2 = "grbz";
+
+    //mySwap(a,b);
+    //mySwap(str1,str2);
+
+    cout<<a<< " "<< b<<endl;
+    cout<<str1<< " "<< str2<<endl;
+
+    swap(a,b);
+    swap(str1,str2);
+
+    cout<<a<< " "<< b<<endl;
+    cout<<str1<< " "<< str2<<endl;
+
+    return 0;
+}
+
+
+
+/*
+ *
+*
 template<typename T>
 bool meme_elements(vector<T> vec1, vector<T> vec2) {
     for(const auto & elem: vec1) {
@@ -35,3 +70,4 @@ int main() {
 
     return 0;
 }
+ */
