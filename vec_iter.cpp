@@ -261,9 +261,6 @@ int main() {
     cout<<areEqualContainers(vecA, vecB);
     cout<<"\n"<<areEqualContainers(vecC, vecB)<< endl;
 
-
-
-
     return 0;
 }
 
