@@ -1,7 +1,46 @@
 //
 // Created by Krm on 24/12/2024.
 //
-#include <any>
+#include <iostream>>
+#include <vector>
+#include <algorithm>
+#include <span>
+#include <array>
+
+using namespace std;
+
+template<typename T>
+ostream& operator<<(ostream& os, span<T> s){
+    os<<"[";
+    for(size_t i = 0; i<s.size(); ++i){
+        if(i) os<<", ";
+        os<<s[i]
+    }
+    return os<< "]";
+
+}
+
+int main(){
+
+array<int, 3> a = {1,2,3};
+vector<int> v = {1,2,3,4,1,2,3,4};
+
+copy(v.begin(), v.end(), a.begin());
+cout<<span<int>(a);
+
+// no 2
+copy(a.begin(), a.end(), v.rbegin());
+
+cout << span<int>(v) << endl;
+
+return 0;
+}
+
+
+
+
+/*
+*#include <any>
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -24,12 +63,6 @@ int main() {
     return 0;
 }
 
-
-
-
-
-/*
-*
 //minimum de Deux Valeurs
 template<typename T>
 T myMin( const T& var1, const T& var2) {
