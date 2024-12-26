@@ -32,6 +32,10 @@ cout<<span<int>(a);
 copy(a.begin(), a.end(), v.rbegin());
 
 cout << span<int>(v) << endl;
+// no 6
+remove(v.begin(), v.end(), 2);
+
+cout << span<int>(v) << endl;
 
 return 0;
 }
