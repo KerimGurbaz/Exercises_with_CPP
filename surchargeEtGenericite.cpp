@@ -89,14 +89,36 @@ public:
 };
 
 int main() {
+    // Employee sınıfından bir nesne oluşturuyoruz
+    Employee emp1("Ahmet Yılmaz", 1001, 5000.0);
 
-    //on creé un objet à partir de la classe employee
-    Employee emp1("Ahmet Yilmaz", 1001, 5000.0);
+    // Nous consultons les informations sur les employés
+    cout << "Statut Initial:" << endl;
+    emp1.displayEmployeeInfo();
+    cout << endl;
 
+    // Nous évaluons avec une note de performance de A
+    emp1.calculateSalary('A');
+    cout << "Statut mis à jour :" << endl;
 
+    emp1.displayEmployeeInfo();
+    cout << endl;
+
+    // Nous expérimentons un autre degré de performance
+    emp1.calculateSalary('B');
+    cout << "Statut mis à jour:" << endl;
+    emp1.displayEmployeeInfo();
+    cout << endl;
+
+    // Nous testons une note de performance invalide
+    emp1.calculateSalary('E');
+    cout << "statut mis à jour" << endl;
+    emp1.displayEmployeeInfo();
+    cout << endl;
 
     return 0;
 }
+
 
 
 
