@@ -3,7 +3,29 @@
 //
 #include <iostream>
 using namespace std;
+// no 1
+template<typename T>
+T somme(T a, T b) {
+    return (a + b);
+}
 
+float somme(int a, float b) {
+    return (a + b);
+}
+
+int main() {
+    int   a = 1;
+    float b = 2.5f;
+    cout << somme(a, b) << " / " << somme(a, b) ;
+}
+
+
+
+/*template<typename T>
+const T& min(const T& a, const T& b , const T& c) {
+    const T& min_ab = (a < b) ? a : b;
+    return (min_ab < c) ? min_ab : c;
+}
 template <typename T>
 T& min(T& a, T& b, T& c) {
     T* minimum = &a; //prenez au minimum pour commencer
@@ -41,5 +63,6 @@ int main() {
     double& min_def = min(d, e, f);
     cout << "min_def referansı: " << min_def << endl; // Çıktı: 1.0
 
-
 }
+
+*/
