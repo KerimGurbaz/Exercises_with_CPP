@@ -95,3 +95,32 @@ public:
     }
 
 };
+
+int main() {
+
+    Date date1(29, 2, 2020);
+    Date date2(31, 4, 2021);
+    Date date3(15, 8, 1947);
+    Date date4(30, 2, 1900);
+
+    cout << "Date 1: ";
+    date1.displayDate();
+
+    cout << "Est-ce valide ?" << (date1.validateDate() ? "oui" : "non") << endl << endl;
+    cout << "Est-ce valide ?" << (date2.validateDate() ? "oui" : "non") << endl << endl;
+    cout << "Est-ce valide ?" << (date3.validateDate() ? "oui" : "non") << endl << endl;
+    cout << "Est-ce valide ?" << (date4.validateDate() ? "oui" : "non") << endl << endl;
+
+
+    //Recuperation et validation des informations de date de l'utilisateur
+    int d,m,y;
+    cout<<"Veuillez saisir une date (Jour Mois Année):";
+    cin>>d>>m>>y;
+    Date userDate(d,m,y);
+
+    cout<<"Date d'entrée : ";
+    userDate.displayDate();
+    cout << "Est-ce valide ?" << (userDate.validateDate() ? "oui" : "non") << endl;
+
+    return 0;
+}
