@@ -6,9 +6,96 @@
 #include <array>
 #include <string>
 #include <algorithm>
+
 using namespace std;
 
-template<typename T>
+// size() metoduna sahip türler (vector, array gibi) için selectionSort
+template <typename T>
+void selectionSort(T& arr) {
+    for (size_t i = 0; i < arr.size() - 1; ++i) {
+        size_t min_idx = i;
+        for (size_t j = i + 1; j < arr.size(); ++j) {
+            if (arr[j] < arr[min_idx]) {
+                min_idx = j;
+            }
+        }
+        if (min_idx != i) {
+            swap(arr[i], arr[min_idx]);
+        }
+    }
+}
+
+// Temel diziler (T[]) için selectionSort
+template <typename T>
+void selectionSort(T arr[], size_t size) {
+    for (size_t i = 0; i < size - 1; ++i) {
+        size_t min_idx = i;
+        for (size_t j = i + 1; j < size; ++j) {
+            if (arr[j] < arr[min_idx]) {
+                min_idx = j;
+            }
+        }
+        if (min_idx != i) {
+            swap(arr[i], arr[min_idx]);
+        }
+    }
+}
+
+// size() metoduna sahip türler için printArray
+template <typename T>
+void printArray(const T& arr) {
+    cout << "[";
+    for (size_t i = 0; i < arr.size(); ++i) {
+        cout << arr[i] << (i < arr.size() - 1 ? ", " : "");
+    }
+    cout << "]" << endl;
+}
+
+// Temel diziler için printArray
+template <typename T>
+void printArray(const T arr[], size_t size) {
+    cout << "[";
+    for (size_t i = 0; i < size; ++i) {
+        cout << arr[i] << (i < size - 1 ? ", " : "");
+    }
+    cout << "]" << endl;
+}
+
+int main() {
+    vector<int> v {6, 2, 8, 7, 1, 3};
+    array<string, 4> a {"chien"s, "chat"s, "souris"s, "poisson"s};
+    double t[] = {6.1, 2.2, 8.3, 7.4, 1.5, 3.6};
+
+    cout << "Vektor oncesi: ";
+    printArray(v);
+    selectionSort(v);
+    cout << "Vektor sonrasi: ";
+    printArray(v);
+
+    cout << "\nArray oncesi: ";
+    printArray(a);
+    selectionSort(a);
+    cout << "Array sonrasi: ";
+    printArray(a);
+
+    cout << "\nDouble Dizisi oncesi: ";
+    printArray(t, sizeof(t)/sizeof(t[0]));
+    selectionSort(t, sizeof(t)/sizeof(t[0])); // Artık derleme hatası vermeyecek
+    cout << "Double Dizisi sonrasi: ";
+    printArray(t, sizeof(t)/sizeof(t[0]));
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+/*
+ * template<typename T>
 void selectionSort(T& container) {
    auto begin_it = container.begin();
    auto end_it = container.end();
@@ -98,5 +185,6 @@ int main() {
    return 0;
 }
 
+ */
 
 
