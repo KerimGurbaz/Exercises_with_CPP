@@ -3,13 +3,15 @@
 //
 #include <iostream>
 #include <vector>
-
+#include <iomanip>
 using namespace std;
 
 using Data = double;
 
 using Ligne  = vector<Data>;
+
 using Matrice = vector<Ligne>;
+
 const Matrice notes {
         {4.0, 5.0, 6.0},  // Jean
         {4.1, 5.1, 4.8},  // Marie
@@ -34,12 +36,34 @@ double average(const Container& container) {
 }
 
 
+
+
+
 int main() {
         vector<double> sums;
         vector<double> averages;
 
+        //Calculer le total et la moyenne pour chaque ligne
+        for(const auto& ligne : notes) {
+                sums.push_back(sum(ligne));
+                averages.push_back(average(ligne));
+        }
 
+        //imprimer les totaux à l'écran
+        cout<<"somme : [";
+        for(size_t i = 0; i < sums.size(); ++i) {
+                cout<<sums[i];
+                if(i < sums.size() -1)cout<<", ";
+        }
+        cout<<"]\n";
 
+        //imprimer les moyennes à l'écran
+        cout<<"moyenne : [";
+        for(size_t i = 0; i < averages.size(); ++i) {
+                cout<<fixed<<setprecision(2)<<averages[i];
+                if(i < averages.size() - 1) cout<<", ";
+        }
+        cout<<"]\n";
 
         return 0;
 }
