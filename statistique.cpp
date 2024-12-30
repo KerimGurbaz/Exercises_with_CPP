@@ -26,3 +26,20 @@ double sum(const Container& container) {
         }
         return total;
 }
+
+template<typename Container>
+double average(const Container& container) {
+        if(container.empty()) return 0.0;
+        return sum(container) / static_cast<double>(container.size());
+}
+
+
+int main() {
+        vector<double> sums;
+        vector<double> averages;
+
+
+
+
+        return 0;
+}
