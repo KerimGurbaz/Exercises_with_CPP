@@ -65,10 +65,15 @@ int main() {
                        {3.5, 4.1     },  // Joshua
                        {4.5, 4.5, 4.6}}; // Ali
 
+        //Calculer et imprimer les totaux
+        vector<Data> sommes =  calculerSommeOuMoyenne(notes, 0);
+        cout << "somme   : ";
+        afficherVecteur(sommes);
 
-
-
-
+        // Calculer et imprimer des moyennes
+        vector<Data> moyennes = calculerSommeOuMoyenne(notes, 1);
+        cout << "moyenne : ";
+        afficherVecteur(moyennes);
 
         return 0;
 }
