@@ -58,31 +58,64 @@ void selectionSort(array<T, N>& arr) {
 
 
 // Pour l'imprimer
-template<typename T>
-void PrintAray(const T& arr) {
-    cout<<"[";
-    for(size_t i = 0; i <arr.size(); ++i) {
-        cout<<arr[i] <<(i < arr.size() -1 ? ", " : "");
+//Yazdirma (vektor icin)
+template <typename T>
+void printArray(const vector<T>& arr)
+{
+    cout << "[";
+    for (int i = 0; i < arr.size(); i++)
+    {
+        cout << arr[i] << (i < arr.size() - 1 ? ", " : "");
     }
-    cout<<"]\n";
+    cout << "]" << endl;
 }
 
+//Yazdirma (array icin)
 template <typename T, size_t N>
-void printArray(const T(&arr)[N]) {
-    cout<<"[";
-    for(size_t i =0; i<N; ++i) {
-        cout<<arr[i]<<(i < N -1 ? ", " : "");
+void printArray(const array<T, N>& arr)
+{
+    cout << "[";
+    for (int i = 0; i < arr.size(); i++)
+    {
+        cout << arr[i] << (i < arr.size() - 1 ? ", " : "");
     }
-    cout<<"]\n";
+    cout << "]" << endl;
+}
+
+//Yazdirma (T[] icin)
+template <typename T, size_t N>
+void printArray(const T(&arr)[N])
+{
+    cout << "[";
+    for (int i = 0; i < N; i++)
+    {
+        cout << arr[i] << (i < N - 1 ? ", " : "");
+    }
+    cout << "]" << endl;
 }
 
 int main() {
-
     vector<int> v {6, 2, 8, 7, 1, 3};
     array<string, 4> a {"chien"s, "chat"s, "souris"s, "poisson"s};
     double t[] = {6.1, 2.2, 8.3, 7.4, 1.5, 3.6};
 
+    cout << "Vektor oncesi: ";
+    printArray(v);
+    selectionSort(v);
+    cout << "Vektor sonrasi: ";
+    printArray(v);
 
+    cout << "\nArray oncesi: ";
+    printArray(a);
+    selectionSort(a);
+    cout << "Array sonrasi: ";
+    printArray(a);
+
+    cout << "\nDouble Dizisi oncesi: ";
+    printArray(t, sizeof(t)/sizeof(t[0]));
+    selectionSort(t, sizeof(t)/sizeof(t[0]));
+    cout << "Double Dizisi sonrasi: ";
+    printArray(t, sizeof(t)/sizeof(t[0]));
 
     return 0;
 }
