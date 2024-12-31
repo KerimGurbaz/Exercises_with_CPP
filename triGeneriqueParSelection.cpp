@@ -6,9 +6,66 @@
 #include <string>
 #include <array>
 #include <algorithm>
-
-
 using namespace std;
+
+//type ligne generique
+template <typename T>
+using Ligne = vector<T>;
+
+//Type de matrice générique
+template<typename T>
+using Matrice = vector<Ligne<T>>;
+
+//fonction/somme  utilisation de la boucle for traditionnelle
+
+/*
+ * template<typename T>
+T somme (const Matrice<T>& matrice) {
+    T total = 0;
+    for(size_t i = 0; i<matrice.size(); ++i) {
+        for(size_t j =0 ; j < matrice[i].size() ; ++j) {
+            total += matrice[i][j];
+        }
+    }
+    return total;
+}
+ */
+
+
+//fonction somme - utilisant la boucle for basée sur range
+template <typename T>
+T somme(const Matrice<T>& matrice) {
+    T total  =0;
+    for(const auto & ligne : matrice) {
+        for(const auto & elem : ligne) {
+            total +=elem;
+        }
+    }
+    return total;
+}
+
+int main() {
+    Matrice<int> mat = {
+        {1,2,3},
+        {4,5,6},
+        {7,8,9}
+    };
+
+    cout << "fonction/somme  utilisation de la boucle for traditionnelle :" << somme(mat) << endl;
+    cout << "fonction somme - utilisant la boucle for basée sur range : " << somme(mat) << endl;
+
+
+    return 0;
+}
+
+
+
+
+
+
+
+/*
+ *
 
 template<typename T, size_t N>
 void selectionSort(T(&arr)[N]) {// Pour tableau(taille fixe)
@@ -120,3 +177,4 @@ int main() {
     return 0;
 }
 
+ */
