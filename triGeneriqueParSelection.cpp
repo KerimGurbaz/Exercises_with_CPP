@@ -1,7 +1,50 @@
 //
 // Created by Krm on 30/12/2024.
 //
+
 #include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+//générique ligne
+template <typename T>
+using Ligne = vector<T>;
+
+//generique Matrice..
+template<typename T>
+using Matrice = vector<Ligne<T>>;
+
+//Matrice<T> icin operator << asiri yuklenmesi
+template<typename T>
+void affiche(const Matrice<T>& matrice) {
+    cout<<"[";
+    for(size_t i =0; i<matrice.size(); ++i) {
+        cout<<"[";
+        for(size_t j = 0; j<matrice[i].size() ; j++) {
+           cout<<matrice[i][j]<<( j < matrice[i].size() -1 ?", ": "");
+        }
+        cout<<"]"<<(i <matrice.size()-1 ? ",":"");
+    }
+    cout<<"]\n";
+}
+int main() {
+
+
+    Matrice<int> m {{0},
+                    {1, 2},
+                    {3, 4, 5},
+                    {6, 7, 8, 9}};
+    affiche(m);
+
+    return 0;
+}
+
+
+
+
+/*#include <iostream>
 #include <vector>
 #include <string>
 #include <array>
@@ -15,10 +58,6 @@ using Ligne = vector<T>;
 //Type de matrice générique
 template<typename T>
 using Matrice = vector<Ligne<T>>;
-
-//fonction/somme  utilisation de la boucle for traditionnelle
-
-/*
  * template<typename T>
 T somme (const Matrice<T>& matrice) {
     T total = 0;
@@ -32,6 +71,15 @@ T somme (const Matrice<T>& matrice) {
  */
 
 
+
+
+
+
+
+
+
+/*
+ *
 //fonction somme - utilisant la boucle for basée sur range
 template <typename T>
 T somme(const Matrice<T>& matrice) {
@@ -57,15 +105,6 @@ int main() {
 
     return 0;
 }
-
-
-
-
-
-
-
-/*
- *
 
 template<typename T, size_t N>
 void selectionSort(T(&arr)[N]) {// Pour tableau(taille fixe)
