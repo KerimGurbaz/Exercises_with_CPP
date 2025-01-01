@@ -77,7 +77,7 @@ ostream& operator<<(ostream& os, const vector<Chiffre>& vec) {
 
 
 int main() {
-    int nbre = 123;
+    int nbre = -123;
     vector<Chiffre> vec = nbreToEnum(nbre);
     cout<<vec<<endl;
 
