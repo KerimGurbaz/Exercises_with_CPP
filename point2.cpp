@@ -4,7 +4,65 @@
 #include <iostream>
 using namespace std;
 
+
 class Point {
+private:
+    double x;
+    double y;
+
+public:
+    Point():x(0.0), y(0.0){}
+    Point(double x_val, double y_val) : x(x_val), y(y_val){}
+
+    void setX(double x_val) {
+        x = x_val;
+    }
+
+    void setY(double y_val) {
+        y = y_val;
+    }
+
+    double  getX() const{
+        return x;
+    }
+    double  getY() const{
+        return y;
+    }
+
+    void afficher() {
+        cout<<x<<" -- "<<y<<endl;
+    }
+
+    void deplacer(double dx, double dy) {
+        x += dx;
+        y += dy;
+    }
+};
+
+int main() {
+    Point centre;
+    centre.afficher();
+
+    Point p(3.5, 2.4);
+    p.afficher();
+
+    centre.deplacer(3,5);
+    centre.afficher();
+
+    cout<<centre.getX()<<endl;
+    cout<<p.getX()<<endl;
+
+
+
+
+    return 0;
+}
+
+
+
+/*
+ *
+*class Point {
 private:
     double x;
     double y;
@@ -60,11 +118,6 @@ int main() {
 
     return 0;
 }
-
-
-
-
-/*
 * struct Point {
 private:
 
