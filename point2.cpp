@@ -49,7 +49,7 @@ private:
     }
 
     void deplacer(double dx, double dy) {
-        if(x + dx >=0 && x+dx<=xMax) {
+        if(x + dx >= 0 && x+dx<=xMax) {
             x += dx;
         }if(y + dy >=0 && y+dy<=yMax) {
             y += dy;
