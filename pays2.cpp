@@ -22,7 +22,7 @@ public :
     double getPopulation() const {
     return population;
 }
-    double setSuperficie() const {
+    double getSuperficie() const {
     return superficie;
 }
 
@@ -55,13 +55,35 @@ int main() {
 
     //Parcourir la liste des pays pour trouver les résultats
     for(const auto& pays : p) {
+        //verifie la superficie
+    if(pays.getSuperficie() > max_superficie) {
+        max_superficie = pays.getSuperficie();
+        plus_grande_superficie = pays.getNom();
+    }
+
+        //Verifier la population
+        if(pays.getPopulation() > max_population) {
+            max_population = pays.getPopulation();
+            plus_peuple = pays.getNom();
+        }
+
+        //Verifier la densite de population
+        double densite_pays = pays.densite();
+        if(densite_pays > max_densite) {
+            max_densite = densite_pays;
+            plus_grande_densite = pays.getNom();
+        }
+
 
     }
 
 
 
 
-
+    // Afficher les résultats
+    cout << "Pays ayant la plus grande superficie               : " << plus_grande_superficie << endl;
+    cout << "Pays ayant le plus d'habitants                     : " << plus_peuple << endl;
+    cout << "Pays ayant la densite de population la plus grande : " << plus_grande_densite << endl;
 
 
     return 0;
