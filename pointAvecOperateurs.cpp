@@ -3,6 +3,43 @@
 //
 #include <iostream>
 using namespace std;
+class Point {
+
+private:
+    double x;
+    double y;
+    const double xMax;
+    const double yMax;
+
+public:
+    Point();
+    Point(double x_val, double y_val, double x_max =100.0, double y_max = 100.0);
+
+    //fonctions members
+    void setX(double x_val);
+    void setY(double y_val);
+    double getX() const;
+    double getY() const;
+    void deplacer(double dx, double dy);
+    void afficher() const;
+
+    // surcharges d'operateurs()fonctions membres
+    Point operator +(const Point& other) const;
+    Point operator *(double scalar) const;
+    bool operator ==(const Point& other) const;
+
+    //surcharges d'operateurs(fonctions amies)
+    friend ostream& operator<<(ostream& os, const Point& p);
+    friend Point operator *(double scalar, const Point& p);
+};
+
+
+
+
+
+/*
+* #include <iostream>
+using namespace std;
 
 class Point {
 private:
@@ -75,3 +112,4 @@ public:
 
 
 };
+ */
