@@ -33,8 +33,86 @@ public:
     friend Point operator *(double scalar, const Point& p);
 };
 
+Point::Point() : x(0.0), y(0.0), xMax(100.0), yMax(100.0) :
+x(x_val), y(y_val), xMax(x_max), yMax(y_max) {
+    if(x<0) x =0;
+    if(x>xMax) x = xMax;
+    if(y<0) y = 0;
+    if(y > yMax) y = yMax;
+}
 
+void Point:: setY(double y_val) {
+    if(y_val >=  0 && y_val <=yMax) {
+        y=y_val;
+    }
+}
 
+void Point::setY(double y_val) {
+    if(y_val >=0 && y_val <=yMax) {
+        y = y_val;
+    }
+}
+
+double Point:: getX()const {
+    return x;
+}
+double Point::getY() const{
+    return y;
+}
+
+void Point::deplacer(double dx, double dy) {
+    if(x + dx >= 0 && x+dx <=xMax) {
+        x +=dx;
+    }
+    if(y + dy >= 0 && y + dy <=yMax) {
+        y += dy;
+    }
+}
+
+void Point::afficher()const {
+    cout<<"("<<x<<","<<y<<"), contraintes: [0, "<<xMax<<"]x[0,"<<yMax<<"]"<<endl;
+}
+Point Point::operator*(double scalar) const {
+    double new_x = x * scalar;
+    double new_y = y * scalar;
+    //Sınır kontrolü
+    if(new_x < 0) new_x = 0;
+    if(new_x > xMax) new_x = xMax;
+    if(new_y < 0) new_y = 0;
+    if(new_y > yMax) new_y = yMax;
+    return Point(new_x, new_y, xMax, yMax);
+}
+
+Point Point::operator*(double scalar) const {
+    double new_x = x * scalar;
+    double new_y = y * scalar;
+    //Sınır kontrolü
+    if(new_x < 0) new_x = 0;
+    if(new_x > xMax) new_x = xMax;
+    if(new_y < 0) new_y = 0;
+    if(new_y > yMax) new_y = yMax;
+    return Point(new_x, new_y, xMax, yMax);
+}
+
+bool Point::operator==(const Point& other) const {
+    return x == other.x && y == other.y;
+}
+
+// Operatör aşırı yüklemeleri (friend fonksiyonlar)
+ostream& operator<<(ostream& os, const Point& p) {
+    os << "(" << p.x << "," << p.y << ")";
+    return os;
+}
+Point operator*(double scalar, const Point& p) {
+    double new_x = scalar * p.x;
+    double new_y = scalar * p.y;
+    //Sınır kontrolü
+    if(new_x < 0) new_x = 0;
+    if(new_x > p.xMax) new_x = p.xMax;
+    if(new_y < 0) new_y = 0;
+    if(new_y > p.yMax) new_y = p.yMax;
+    return Point(new_x, new_y, p.xMax, p.yMax);
+}
 
 
 /*
