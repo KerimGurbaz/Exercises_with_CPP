@@ -3,6 +3,25 @@
 //
 #include <iostream>
 using namespace std;
+#include <vector>
+
+int main() {
+    vector<int> v{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    vector<int> v3(v.rbegin() + 2, v.rend() +1);
+
+    for(size_t i = 0; i<v3.size(); ++i) {
+        cout<<v3[i]<<" ";
+    }
+
+
+
+    return 0;
+}
+
+
+/*
+ *
+ *using namespace std;
 class Point {
 
 private:
@@ -114,8 +133,6 @@ Point operator*(double scalar, const Point& p) {
     return Point(new_x, new_y, p.xMax, p.yMax);
 }
 
-
-/*
 * #include <iostream>
 using namespace std;
 
