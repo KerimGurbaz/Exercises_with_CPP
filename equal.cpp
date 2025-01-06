@@ -9,10 +9,26 @@
 
 using namespace std;
 
-template<typename T1, typename T2,typename T3>
+#pragma once
+#include<algorithm>
+template<typename Iterator1>
+void make_set(std::vector<Iterator1>&v){
+    std::sort(v.begin(),v.end());
+    auto iter= std::unique(v.begin(), v.end());
+    v.erase(iter, v.end());
+}
 
-bool equal_set(const vector<T1>& vec1,const vector<T2>& vec2) {
-    vector<T1> cV1 = vec1;
+template<typename Iterator1, typename Iterator2 >
+bool equal_set(Iterator1 cbeg, Iterator1 cend, Iterator2 cbeg2, Iterator2 cend2){
+    vector<int> vec1(cbeg, cend);
+    vector<int> vec2 (cbeg2, cend2);
+    make_set(vec1);
+    make_set(vec2);
+
+    if(vec1.size() != vec2.size()){
+        return false;
+    }
+    return std::equal(vec1.begin(),vec1.end(),vec2.begin());
 
 }
 
