@@ -26,9 +26,8 @@ int main() {
     return 0;
 }
  *
- */
-
-#include <iostream>
+ *
+*#include <iostream>
 #include <vector>
 #include <list>
 
@@ -71,3 +70,15 @@ int main() {
 
     return 0;
 }
+
+ */
+template <typename T>
+T max_value(T a, T b) {
+    return (a > b ? a : b);
+}
+int main() {
+    unsigned int e = 5;
+    char f = 'f';
+    cout<<max_value<char>(f, e)<<" / " << max_value<unsigned int>(f,e);
+}
+
