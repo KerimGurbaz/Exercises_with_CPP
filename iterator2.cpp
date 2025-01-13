@@ -70,8 +70,6 @@ int main() {
 
     return 0;
 }
-
- */
 template <typename T>
 T max_value(T a, T b) {
     return (a > b ? a : b);
@@ -81,4 +79,19 @@ int main() {
     char f = 'f';
     cout<<max_value<char>(f, e)<<" / " << max_value<unsigned int>(f,e);
 }
+ */
 
+
+template<typename T>
+T difference(T a, T b) {
+    return (a -b);
+}
+
+ int main() {
+    int x = 5;
+    float y = 2.3f;
+    cout<<difference<int>(x,y)<<" / "<< difference<float>(x,y);
+
+
+    return 0;
+}
