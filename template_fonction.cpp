@@ -96,7 +96,6 @@ int main() {
     return 0;
 }
 ----------------------------
- */
 
 template<typename T>
 typename T::value_type sumElements(T begin, T end) {
@@ -113,6 +112,31 @@ int main() {
     cout<<res;
     return 0;
 }
+ */
+template<typename T>
+typename T::value_type sumElements(T begin, T end) {
+    typename T::value_type sum=0;
+    for(T it = begin; it != end ; ++it) {
+        sum += *it;
+    }
+    return sum;
+}
+
+int main() {
+    vector<int> v{1,2,3,4,5};
+    vector<int> numbers{10, 20, 30, 40, 50, 60};
+
+    //vector<string> words = {"Hello", " ", "C++", " ", "World"};
+
+    cout<<sumElements(v.begin(), v.end())<<endl;
+    cout<<sumElements(numbers.begin()+2 , numbers.begin()+5);
+    //cout<<sumElements(words.begin(), words.end());
+
+
+    return 0;
+}
+
+
 
 
 
