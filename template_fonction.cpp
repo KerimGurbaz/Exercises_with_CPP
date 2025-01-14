@@ -3,6 +3,8 @@
 //
 #include <iostream>
 #include <vector>
+
+#include "../../../../Program Files/JetBrains/CLion 2024.1.4/bin/mingw/x86_64-w64-mingw32/include/complex.h"
 using namespace std;
 
 /*
@@ -61,8 +63,7 @@ int main() {
     cout<< myMax<double>(3.5, 4)<<endl;;
     cout <<myMax<char>('c', 'w');
 }
-
- */
+-------------------
 template<typename T>
 T diff(T a, T b) {
     return (a - b) ;
@@ -76,4 +77,43 @@ int main() {
     cout<<diff<int>(x,y)<<endl;;
     cout<<diff<double>(x,y);
 }
+----------------------------------
+
+template<typename T>
+T sumElements( const vector<T>& vec) {
+    auto sum =0;
+    for(const auto & el : vec) {
+        sum += el;
+    }
+    return sum;
+}
+
+int main() {
+    vector<int> v{1,2,3,4,5};
+    //auto res = sumElements(v);
+    cout<<sumElements(v);
+
+    return 0;
+}
+----------------------------
+ */
+
+template<typename T>
+typename T::value_type sumElements(T begin, T end) {
+    typename T::value_type sum =0;
+    for(T it = begin; it != end ; ++it) {
+        sum += *it;
+    }
+    return sum;
+}
+
+int main() {
+    vector<int> v{1,2,3,4,5};
+    auto res  = sumElements(v.begin(), v.end());
+    cout<<res;
+    return 0;
+}
+
+
+
 
