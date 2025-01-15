@@ -169,45 +169,40 @@ vector<double> temps = {15.5, 20.1, 23.4, 18.9, 16.7, 14.3};
 
     return 0;
 }
+--------------------------------------
  */
 #include <array>
+#include <algorithm>
 
 template <typename T>
-vector<T> findDailyMax(const vector<vector<T>>& mat) {
+vector<T> findDailyMaxAlgo(const vector<vector<T>>& mat) {
     vector<T> res;
-    for(auto it = mat.begin() ; it != mat.end() ; ++it) {
-        T t_max = *(it-> begin());
-        for (auto it2 = it->begin(); it2 != it->end(); ++it2) {
-            if( *it2 > t_max) {
-                t_max = (*it2 );
-            }
-        }
-        res.push_back(t_max);
+    for(const auto &row : mat) {
+        res.push_back(*max_element(row.begin(), row.end()));
     }
 
     return res;
-
 }
-int main() {
-    using Data = double;
-using Serie = vector<Data>;
-using Matrice  = vector<Serie>;
 
-    const Matrice temperatures {
-        {15.5, 20.1, 23.4, 19.0, 16.2}, // Lundi
-        {17.1, 20.3, 22.2, 21.1, 18.4}, // Mardi
-        {16.0, 19.5, 21.5, 20.0, 17.5}, // Mercredi
-        {14.5, 18.0, 22.8, 20.5, 19.0}  // Jeudi
+int main() {
+
+    using Data = double;
+    using Serie = vector<Data>;
+    using Matrice = vector<Serie>;
+
+    const Matrice temperatures{
+            {15.5, 20.1, 23.4, 19.0, 16.2}, // Lundi
+            {17.1, 20.3, 22.2, 21.1, 18.4}, // Mardi
+            {16.0, 19.5, 21.5, 20.0, 17.5}, // Mercredi
+            {14.5, 18.0, 22.8, 20.5, 19.0}  // Jeudi
     };
 
-    vector<double> max_tem = findDailyMax(temperatures);
-    for(auto const&it : max_tem) {
-        cout<<it<<" ";
+    vector<double> maxTemps = findDailyMaxAlgo(temperatures);
+    for(double temps : maxTemps) {
+        cout<<temps<<" ";
     }
+    return 0 ;
 }
-
-
-
 
 
 
