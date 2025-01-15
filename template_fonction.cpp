@@ -170,17 +170,13 @@ vector<double> temps = {15.5, 20.1, 23.4, 18.9, 16.7, 14.3};
     return 0;
 }
 --------------------------------------
- */
-#include <array>
-#include <algorithm>
 
 template <typename T>
-vector<T> findDailyMaxAlgo(const vector<vector<T>>& mat) {
+vector<T> findDailyMaxAlgo(const vector<vector<T>> & mat) {
     vector<T> res;
-    for(const auto &row : mat) {
-        res.push_back(*max_element(row.begin(), row.end()));
+    for(const auto & ligne : mat) {
+        res.push_back(*max_element(ligne.begin(), ligne.end()));
     }
-
     return res;
 }
 
@@ -201,6 +197,33 @@ int main() {
     for(double temps : maxTemps) {
         cout<<temps<<" ";
     }
+    return 0 ;
+}
+----------------------------------
+ */
+#include <array>
+#include <algorithm>
+#include <numeric>
+
+
+template<typename It>
+typename iterator_traits<It>::value_type accumulateRange(It start, It stop) {
+    using value_type = typename::iterator_traits<It>::value_type;
+    return accumulate(start, stop, value_type(0));
+}
+
+int main() {
+
+    vector<int> int_vec = {1,2,3,4,5};
+    int int_sum = accumulateRange(int_vec.begin(), int_vec.end());
+
+    vector<double> double_vec = {1, 2.3, 5.4, 6};
+
+    int double_sum = accumulateRange(double_vec.begin(), double_vec.end());
+cout<<int_sum<<endl;
+    cout<<double_sum<<endl;
+
+
     return 0 ;
 }
 
