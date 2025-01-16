@@ -200,11 +200,6 @@ int main() {
     return 0 ;
 }
 ----------------------------------
- */
-#include <array>
-#include <algorithm>
-#include <numeric>
-
 
 template<typename It>
 typename iterator_traits<It>::value_type accumulateRange(It start, It stop) {
@@ -226,6 +221,32 @@ cout<<int_sum<<endl;
 
     return 0 ;
 }
+ */
+#include <array>
+#include <algorithm>
+#include <numeric>
+
+template <typename It>
+typename iterator_traits<It>::value_type accumulateRange(It start, It stop) {
+    using value_type = typename iterator_traits<It>::value_type;
+    return accumulate(start, stop, value_type(0));
+}
+
+int main() {
+    vector<int> int_vec = {1,2,3,4,5};
+    int int_sum = accumulateRange(int_vec.begin(),int_vec.end() );
+    cout<<"sum int = " << int_sum<<endl;
+
+    vector<double> vec_double = {1.2, 3.4, 5.6};
+    double sum_double = accumulateRange(vec_double.begin(), vec_double.end());
+
+    cout<<"sum double = " <<sum_double<<endl;
+
+
+    return 0;
+}
+
+
 
 
 
