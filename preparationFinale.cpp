@@ -1,7 +1,7 @@
 //
 // Created by Krm on 18/01/2025.
 //
-#include <iostream>
+/*#include <iostream>
 #include <vector>
 #include <array>
 #include <algorithm>
@@ -29,6 +29,27 @@ int main() {
     // Ters çevrilmiş diziyi yazdır.
     std::cout << "Ters cevrilmis dizi:" << std::endl;
     for (int element : my_array) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}*/
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    // Bir std::vector tanımla ve değerlerle doldur.
+    std::vector<int> v = {5, 9, 1, 4, 3, 8};
+
+    // Vektörü std::sort ve lambda ifadesi ile azalan sırada sırala.
+    std::sort(v.begin(), v.end(), [](int a, int b) { return a > b; });
+
+    // Sıralanmış vektörü yazdır.
+    std::cout << "Azalan sirada siralanmis vektor:" << std::endl;
+    for (int element : v) {
         std::cout << element << " ";
     }
     std::cout << std::endl;
