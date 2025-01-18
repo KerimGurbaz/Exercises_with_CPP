@@ -34,8 +34,8 @@ int main() {
     std::cout << std::endl;
 
     return 0;
-}*/
-
+}
+-------------------------------------
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -56,3 +56,26 @@ int main() {
 
     return 0;
 }
+*/
+#include <iostream>
+#include <array>
+#include <numeric>
+
+int main() {
+    // Bir std::array tanımla ve değerlerle doldur.
+    std::array<int, 5> a = {1, 2, 3, 4, 5};
+
+
+
+    // std::accumulate kullanarak tüm elemanların toplamını hesapla.
+    int toplam = std::accumulate(a.begin(), a.end(), 1, [](int a, int b) {
+        return a*b;
+    });
+
+    // Toplamı yazdır.
+    std::cout << "Elemanlarin toplami: " << toplam << std::endl;
+
+    return 0;
+}
+
+
