@@ -42,10 +42,10 @@ int main() {
 
 int main() {
     // Bir std::vector tanımla ve değerlerle doldur.
-    std::vector<int> v = {5, 9, 1, 4, 3, 8};
+    std::vector<int> v = {5, 9, 1, 4, 3, 8, 1,2,3};
 
     // Vektörü std::sort ve lambda ifadesi ile azalan sırada sırala.
-    std::sort(v.begin(), v.end(), [](int a, int b) { return a > b; });
+    std::sort(v.begin(), v.begin()+5, [](int a, int b) { return a > b; });
 
     // Sıralanmış vektörü yazdır.
     std::cout << "Azalan sirada siralanmis vektor:" << std::endl;
