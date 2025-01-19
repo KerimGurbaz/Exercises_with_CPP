@@ -74,16 +74,7 @@ int main() {
 
     return 0;
 }
-*/
-
-#include <iostream>
-#include <array>
-#include <numeric>
-
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
+-----------------------
 int main() {
     // Kaynak vektörü tanımla ve değerlerle doldur.
     std::vector<int> src = {1, 2, 3, 4, 5};
@@ -103,6 +94,38 @@ int main() {
 
     return 0;
 }
+*/
+
+#include <iostream>
+#include <array>
+#include <numeric>
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+int main() {
+    // Bir std::vector tanımla ve değerlerle doldur.
+    std::vector<int> v = {1, 2, 3};
+
+    v.reserve(100);
+
+    // Vektörün ilk elemanına bir referans oluştur.
+    int& ref = v[0];
+
+
+    // Vektörün boyutunu değiştir.
+   v.resize(10);
+
+    // Referansın gösterdiği değeri yazdır (tanımsız davranış!).
+    std::cout << "ref degeri: " << ref << std::endl;
+
+    return 0;
+}
+
+
 
 
 
