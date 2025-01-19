@@ -56,11 +56,8 @@ int main() {
 
     return 0;
 }
-*/
-#include <iostream>
-#include <array>
-#include <numeric>
 
+----------------------
 int main() {
     // Bir std::array tanımla ve değerlerle doldur.
     std::array<int, 5> a = {1, 2, 3, 4, 5};
@@ -68,7 +65,7 @@ int main() {
 
 
     // std::accumulate kullanarak tüm elemanların toplamını hesapla.
-    int toplam = std::accumulate(a.begin(), a.end(), 1, [](int a, int b) {
+    int toplam = std::accumulate(a.begin(), a.end(), 1, [](int a, double b) {
         return a*b;
     });
 
@@ -77,5 +74,36 @@ int main() {
 
     return 0;
 }
+*/
+
+#include <iostream>
+#include <array>
+#include <numeric>
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    // Kaynak vektörü tanımla ve değerlerle doldur.
+    std::vector<int> src = {1, 2, 3, 4, 5};
+
+    // Hedef vektörü tanımla.
+    std::vector<int> dst;
+
+    // Kaynak vektörün elemanlarını hedef vektöre ters sırada kopyala.
+    dst.assign(src.rbegin(), src.rend());
+
+    // Hedef vektörün içeriğini yazdır.
+    std::cout << "Hedef vektor (ters sirali):" << std::endl;
+    for (int element : dst) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+
+
 
 
