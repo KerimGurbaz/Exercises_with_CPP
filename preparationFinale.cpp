@@ -94,9 +94,8 @@ int main() {
 
     return 0;
 }
-*/
 
-#include <iostream>
+-----------------------------------#include <iostream>
 #include <array>
 #include <numeric>
 
@@ -121,6 +120,21 @@ int main() {
 
     // Referansın gösterdiği değeri yazdır (tanımsız davranış!).
     std::cout << "ref degeri: " << ref << std::endl;
+
+    return 0;
+}
+
+*/
+#include <iostream>
+#include <array>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    array<int , 5>numbers;
+
+    cout<<"Veuillez saisir 5 nombres entier:"<<endl;
+
 
     return 0;
 }
