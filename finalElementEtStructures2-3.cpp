@@ -268,10 +268,8 @@ Conseil : essayer de trouver la réponse "à la main", puis vérifier votre rép
 -------------
  */
 
-#include <iostream>
-#include <vector>
-
-int main() {
+/*
+* int main() {
     std::vector<int> v;
     std::cout << "Başlangıç kapasitesi: " << v.capacity() << std::endl;
 
@@ -291,4 +289,15 @@ int main() {
     std::cout << "resize(100) sonrası kapasite: " << v.capacity() << std::endl;
 
     return 0;
+    ----------
 }
+ */
+
+#include <iostream>
+#include <vector>
+#include <array>
+#include <span>
+#include <algorithm>
+
+
+
