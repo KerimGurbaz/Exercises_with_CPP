@@ -24,7 +24,7 @@ int main() {
 
 
     cout<<cercle.rayon<<endl;
-    cout<<cercle .rayon;
+    cercle.centre =origine;
 
     return 0;
 }
