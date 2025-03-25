@@ -1,6 +1,7 @@
 //
 // Created by Krm on 07.03.2025.
 //
+#include <cstdint>
 #include <iostream>
 using namespace std;
 
@@ -227,7 +228,6 @@ int main() {
     return 0;
 }
 
- */
 
 #include <iostream>
 #include <sstream>
@@ -309,4 +309,85 @@ int main() {
       << to_string(d1) << " et "
       << to_string(d2) << endl;
 }
+
+
+ */
+struct Student {
+    string prenom;
+    string nom;
+    uint16_t num;
+};
+
+struct Rectangle {
+    int width;
+    int height;
+};
+
+void printStudent(const Student &s) {
+    cout<<s.prenom<<"\n"<<s.nom<<"\n"<<s.num<<endl;
+
+}
+
+struct Adress {
+    string street;
+    string city ;
+    int zipCode;
+};
+
+struct Employee {
+    string name;
+    int age;
+    Adress adress;
+};
+
+struct Product {
+    string name;
+    int price;
+};
+
+int main() {
+
+    Product p[5] = {
+        {"Toyota", 1000},
+        {"BMW", 2000},
+        {"Tesla" , 5000},
+        {"Volvo", 4000},
+        {"Mercedes", 3000}
+    };
+    int index = 0;
+    int max = p[0].price;
+    for(int i = 1; i < 5 ; ++i) {
+
+     if(p[i].price >= max) {
+         max = p[i].price;
+         index = i;
+     }
+    }
+ cout<<"la voiture avec le prix le plus élevé est "<<p[index].name
+        <<" prix est "<<p[index].price<<endl;
+    Student s = {"KErim ", "Gurbaz", 1287};
+    cout<<s.nom<<" ,"<<s.prenom<<" no = "<<s.num<<endl;
+
+    Rectangle r ={5, 10};
+    cout<<"Avant , L'aire est   = "<< r.height * r.width<<endl;
+
+    r.height = 100;
+
+    cout<<"Apres , L'aire est   = "<< r.height * r.width<<endl;
+
+    printStudent(s);
+
+    Employee e = {"Damla", 32, {"rose", "Ankara", 1110}};
+
+
+    cout<<e.name
+    <<e.age
+    <<e.adress.city<<endl;
+
+
+
+
+    return 0;
+}
+
 
