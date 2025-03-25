@@ -198,9 +198,6 @@ int main() {
 
     return 0;
 }
-
- */
-
 struct Date {
     int jour, mois, annee;
 };
@@ -227,10 +224,89 @@ int main() {
     cout<<est_bissextile(d2)<<endl;
     cout<<est_bissextile(d3)<<endl;
     cout<<est_bissextile(d4)<<endl;
-
-
-
-
-
     return 0;
 }
+
+ */
+
+#include <iostream>
+#include <sstream>
+#include <cstdint>
+#include <cstdlib>
+using namespace std;
+
+struct Date {
+    uint8_t jour;
+    uint8_t mois;
+    uint16_t annee;
+};
+
+//Vérifie si une année est bissextile selon la calendrier gregorian
+
+bool is_leap_year(int year) {
+    return (year % 400 == 0) || (year % 4 == 0 && year %100 != 0);
+}
+
+//Retourne le nombre de jours dans un mois donné d'une année donnée
+
+int days_in_month(int month, int year) {
+    switch(month) {
+        case 1: return 31;
+        case 2: return is_leap_year(year) ? 29 : 28;
+        case 3: return 31;
+        case 4: return 30;
+        case 5: return 31;
+        case 6: return 30;
+        case 7: return 31;
+        case 8: return 31;
+        case 9: return 30;
+        case 10: return 31;
+        case 11: return 30;
+        case 12: return 31;
+
+        default :return 0; // cas d'erreur
+
+    }
+}
+
+int date_to_int(const Date &d) {
+    int days = 0;
+    for(int y = 1; y <d.annee; y++) {
+        days += is_leap_year(y) ? 366 : 365;
+    }
+
+    // Ajouter les jours pour tous les mois complets de l'année courante
+    for(int m = 1 ; m < d.mois ; m++) {
+        days += days_in_month(m, d.annee);
+    }
+
+    days += d.jour;
+
+    return days;
+
+}
+
+//Calcule le nombre de jours entre deux dates(l'orde n'a pas d'importance)
+int jours_entre(const Date &d1, const Date &d2) {
+    int days1 = date_to_int(d1);
+    int days2 = date_to_int(d2);
+    return abs(days2 -days1);
+}
+
+string to_string(const Date &d) {
+    stringstream ss;
+    ss<<static_cast<int>(d.jour)<<"/"
+    <<static_cast<int>(d.mois)<<"/"
+    <<d.annee;
+    return ss.str();
+}
+
+int main() {
+    Date d1{31, 1, 1973};
+    Date d2{7, 11, 2023};
+
+    cout << jours_entre(d1, d2) << " jours entre "
+      << to_string(d1) << " et "
+      << to_string(d2) << endl;
+}
+
