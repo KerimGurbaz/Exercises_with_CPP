@@ -309,9 +309,6 @@ int main() {
       << to_string(d1) << " et "
       << to_string(d2) << endl;
 }
-
-
- */
 struct Student {
     string prenom;
     string nom;
@@ -389,5 +386,104 @@ int main() {
 
     return 0;
 }
+using namespace std;
 
+struct Letters {
+    char first;
+    char last;
+};
+Letters premiere_et_derniere_lettres(const string &s) {
+    Letters res;
+    res.first = s[0];
+    res.last = s[(s.size() - 1)];
+    return res;
+}
+
+
+int main() {
+    string s = "Hello";
+    auto [ prem, der ] = premiere_et_derniere_lettres(s);
+    cout << prem << " -> " << der << endl;
+}
+
+#include <iostream>
+#include <string>
+#include <stdexcept>
+using namespace std;
+struct Letter {
+    char first;
+    char middle;
+    char last;
+};
+Letter premiere_mil_derniere_lettres(string &s) {
+    if(s.empty()) {
+        throw invalid_argument("La chaine est vide");
+    }
+    Letter res;
+    res.first = s.front();
+    res.last = s.back();
+    res.middle = (s.size() % 2 ? s[(s.size() )/2] : s[(s.size())/2 -1]);
+
+    return res;
+}
+
+
+int main() {
+    try {
+        string s = "d";
+    auto [ prem,mil, der ] = premiere_mil_derniere_lettres(s);
+    cout << prem << " -> " << mil<< " -> "<<der << endl;
+    }catch(const invalid_argument &e) {
+        cerr<<"Erreur: "<< e.what()<<endl;
+    }
+
+}
+ */
+
+#include <iostream>
+#include <string>
+#include <tuple>
+#include <stdexcept>
+using namespace std;
+
+tuple<char, char, char> obtenirPremierMilieuDerniereLettre(const string &chaine) {
+    if(chaine.empty()) {
+        throw invalid_argument("La chaine ne peut pas etre vide");
+    }
+
+    char premierLettre = chaine[0];
+
+    size_t longueur = chaine.length();
+    size_t indexMilieu;
+
+    if(longueur % 2 == 0) {
+        indexMilieu = longueur / 2 - 1 ;
+    }else {
+        indexMilieu = longueur /2;
+    }
+
+    char lettreMilieu = chaine[indexMilieu];
+    char dernierLettre = chaine[longueur - 1];
+
+    return make_tuple(premierLettre, lettreMilieu, dernierLettre);
+}
+
+int main() {
+    string mot1 ="example";
+    string mot2 = "ordinateur";
+    string mot3 =  "a";
+
+    try {
+        auto[premiere1, milieu1, derniere1]= obtenirPremierMilieuDerniereLettre(mot2);
+        cout << "Pour le mot '" << mot1 << "': Première lettre = " << premiere1
+        << ", Lettre du milieu = " << milieu1 << ", Dernière lettre = " << derniere1 << std::endl;
+    }catch (const invalid_argument &e) {
+        cerr<<"Erreur : "<<e.what();
+
+    }
+
+
+
+    return 0;
+}
 
