@@ -438,7 +438,7 @@ int main() {
     }
 
 }
- */
+
 
 #include <iostream>
 #include <string>
@@ -486,4 +486,40 @@ int main() {
 
     return 0;
 }
+
+ */
+
+#include <iostream>
+#include <string>
+#include <stdexcept>
+using namespace std;
+
+struct MinMax {
+    char min ;
+    char max;
+};
+
+
+MinMax minmax(const string &s) {
+    if(s.empty()) {
+        throw invalid_argument("La chaine est vide");
+    }
+    char minC = s.front();
+    char maxC = s.front();
+
+    for(char c : s) {
+        if(c < minC) minC = c;
+        if(c> maxC) maxC = c;
+    }
+
+    return {minC, maxC};
+}
+
+int main() {
+    string s = "Hello";
+    auto[min, max] = minmax(s);
+    cout << "Min: " << min << " - Max: " << max << endl;
+}
+
+
 
