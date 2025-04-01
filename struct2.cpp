@@ -543,10 +543,6 @@ int main() {
     cout<<prem_vide<<"->"<< der_vide<<endl;
 
 }
-
- */
-
-
 #include <iostream>
 
 #include <string>
@@ -569,3 +565,59 @@ int main() {
 
     return 0;
 }
+ */
+
+#include <iostream>
+#include <string>
+#include <stdexcept>
+#include <utility>
+#include <tuple>
+using namespace std;
+
+bool premiere_et_derniere_identiques (const string &s) {
+    if(s.empty()) {
+        throw invalid_argument("La chaine ne doit pas etre vide");
+    }
+
+    if(s.length() < 2) {
+        return false;
+    }else {
+        char pre = s[0];
+        char der = s[s.length()-1];
+        if(pre == der) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+}
+
+tuple<char, char, int> exemple (const string & s) {
+    if(s.empty()) {
+        throw invalid_argument("La cjhaine ne doit pas etre vide");
+    }
+
+    return make_tuple(s.front(), s.back(), s.size());
+}
+int main() {
+    try {
+        string s1 = "selams";
+        string s2 = "kerim";
+
+        bool res = premiere_et_derniere_identiques(s1);
+        cout<<res<<endl;
+
+        bool res2 = premiere_et_derniere_identiques(s2);
+        cout<<res2<<endl;
+    }catch(const exception &e) {
+        cout<<"Erreur : " <<e.what()<<endl;
+    }
+}
+
+
+
+
+
+
