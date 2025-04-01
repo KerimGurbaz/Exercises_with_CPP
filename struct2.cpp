@@ -487,8 +487,6 @@ int main() {
     return 0;
 }
 
- */
-
 #include <iostream>
 #include <string>
 #include <stdexcept>
@@ -520,6 +518,54 @@ int main() {
     auto[min, max] = minmax(s);
     cout << "Min: " << min << " - Max: " << max << endl;
 }
+#include <iostream>
+#include <string>
+#include <utility>
+using namespace std;
+
+pair<char, char> premiere_et_derniere_lettres(const string &str) {
+    if(str.empty()) {
+        return make_pair('\0', '\0');
+    }
+    char premiere = str[0];
+    char derniere = str[str.length()- 1];
+    return make_pair(premiere, derniere);
+}
 
 
+int main() {
+    string s = "Hello";
+    auto [prem, der] = premiere_et_derniere_lettres(s);
+    cout<<prem<<"->"<< der<<endl;
 
+    string vide = "";
+    auto [prem_vide, der_vide] = premiere_et_derniere_lettres(vide);
+    cout<<prem_vide<<"->"<< der_vide<<endl;
+
+}
+
+ */
+
+
+#include <iostream>
+
+#include <string>
+#include <utility>
+using namespace std;
+
+char deuixeme(const string &s) {
+  if(s. empty() || s.length() < 2) {
+      return 0;
+  }
+
+    char second = s[1];
+    return second;
+}
+int main() {
+
+    string name = "KErim ";
+    char res = deuixeme(name);
+    cout<<res;
+
+    return 0;
+}
