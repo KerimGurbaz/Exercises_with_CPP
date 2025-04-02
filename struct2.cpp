@@ -565,7 +565,6 @@ int main() {
 
     return 0;
 }
- */
 
 #include <iostream>
 #include <string>
@@ -615,6 +614,73 @@ int main() {
         cout<<"Erreur : " <<e.what()<<endl;
     }
 }
+ */
+#include <iostream>
+using namespace std;
+
+using Jour = uint8_t;
+using Mois = uint8_t;
+using Annee = uint16_t;
+
+enum class MoisEnum {
+    Janvier =1,
+    Fevrier,
+    Mars,
+    Avril,
+    Mai,
+    Juin,
+    Juillet,
+    Aout,
+    Septembre,
+    Octobre,
+    Novembre,
+    Decembre
+};
+
+struct Date {
+    Jour jour;
+    Mois mois;
+    Annee annee;
+};
+
+bool est_bissextile(Annee annee) {
+    return (annee % 4 == 0 && annee %100 != 0) || (annee %400 == 0);
+}
+
+Jour nombreJoursDansMois(MoisEnum mois, Annee annee) {
+    switch (mois) {
+        case MoisEnum::Janvier:
+            case MoisEnum::Mars:
+        case MoisEnum::Mai:
+        case MoisEnum::Juillet:
+        case MoisEnum::Aout:
+        case MoisEnum::Octobre:
+        case MoisEnum::Decembre:
+        return 31;
+        case MoisEnum::Avril:
+            case MoisEnum::Juin:
+        case MoisEnum::Septembre:
+        case MoisEnum::Novembre:
+        return 30;
+        case MoisEnum ::Fevrier:
+            return (est_bissextile(annee) ? 29 : 28 );
+        default:
+            return 0;
+    }
+}
+
+int main() {
+
+    Annee annee1 = 2023;
+    MoisEnum mois1 = MoisEnum::Fevrier;
+
+    cout<<"Nombre de jours en fevrier "<< annee1<<" : "<<static_cast<int>(nombreJoursDansMois(mois1, annee1)) <<endl;
+
+
+
+    return 0;
+}
+
 
 
 
