@@ -681,8 +681,6 @@ int main() {
     return 0;
 }
 
- */
-
 #include <iostream>
 using namespace std;
 
@@ -715,6 +713,82 @@ int main() {
 
     cout<<"Date : "<<aujourdHui.jour<<"/"<<(aujourdHui.mois)<<"/"<<aujourdHui.annee<<endl;
     cout<<aujourdHui.mois<<endl;
+}
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum class Jour{LUNDI, MARDI, MERCREDI, JEUDI, VENDREDI, SAMEDI, DIMANCHE};
+
+int main() {
+    Jour jour = Jour::VENDREDI;
+
+    string chaine = "jour de la semaine : " ;
+
+    switch(jour) {
+        case Jour::LUNDI:
+            chaine += "lundi";
+        break;
+        case Jour::MARDI:
+            chaine += "mardi";
+        break;
+        case Jour::MERCREDI:
+            chaine += "mecredi";
+        break;
+    case Jour::JEUDI:
+            chaine += "jeudi";
+        break;
+        case Jour::VENDREDI:
+            chaine += "vendredi";
+        break;
+        case Jour::SAMEDI:
+            chaine += "samedi";
+        break;
+        case Jour::DIMANCHE:
+            chaine += "dimanche";
+        break;
+        default:
+            chaine = "jour inconnu";
+        break;
+    }
+
+    cout<<  chaine<<endl;
+
+}
+ */
+
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum class Couleur{ROUGE, VERT, BLEU};
+
+int main(){
+    Couleur couleur = static_cast<Couleur>(99);
+    string str = "C'est la couleur " ;
+
+    switch(couleur) {
+        case Couleur::BLEU:
+            str += "blue";
+        break;
+        case Couleur::ROUGE:
+            str += "rouge";
+        break;
+        case Couleur::VERT:
+            str += "vert ";
+        break;
+        default:
+            str+="innconu";
+    }
+
+    cout<<str<<endl;
+
+
+    return 0;
+
 }
 
 
