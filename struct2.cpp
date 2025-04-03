@@ -614,7 +614,7 @@ int main() {
         cout<<"Erreur : " <<e.what()<<endl;
     }
 }
- */
+
 #include <iostream>
 using namespace std;
 
@@ -681,9 +681,41 @@ int main() {
     return 0;
 }
 
+ */
 
+#include <iostream>
+using namespace std;
 
+enum NomMois {
+    Janvier =1,
+    Février,
+   Mars,
+   Avril,
+   Mai,
+   Juin,
+   Juillet,
+   Août,
+   Septembre,
+   Octobre,
+   Novembre,
+   Décembre
+};
 
+struct Date {
+    int jour;
+    NomMois mois; //utilisation de l'enueration pour le mois
+    int annee;
+};
+
+int main() {
+    Date aujourdHui;
+    aujourdHui.jour =15;
+    aujourdHui.mois = Mars;
+    aujourdHui.annee = 2025;
+
+    cout<<"Date : "<<aujourdHui.jour<<"/"<<(aujourdHui.mois)<<"/"<<aujourdHui.annee<<endl;
+    cout<<aujourdHui.mois<<endl;
+}
 
 
 
