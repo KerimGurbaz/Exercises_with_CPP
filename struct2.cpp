@@ -756,9 +756,6 @@ int main() {
     cout<<  chaine<<endl;
 
 }
- */
-
-
 
 #include <iostream>
 #include <string>
@@ -790,6 +787,52 @@ int main(){
     return 0;
 
 }
+
+ */
+#include <iostream>
+
+enum class Direction{HAUT, BAS, DROITE,GAUCHE};
+
+
+struct Coord {
+    int x =0;
+    int y = 0;
+};
+
+using Point = Coord;
+
+void deplacer(Point & point, Direction direction) {
+    switch(direction) {
+        case Direction::HAUT:
+            point.y++;
+        break;
+        case Direction::BAS:
+            point.y--;
+        break;
+        case Direction::DROITE:
+            point.x++;
+        break;
+        case Direction::GAUCHE:
+            point.x--;
+        default:
+            break;
+    }
+}
+
+int main() {
+    Point p; //Point initial à (0,0);
+    cout<<"Point initial : ("<<p.x<<", "<<p.y<<")\n";
+
+    deplacer(p, Direction::HAUT);
+    cout << "Après déplacement HAUT: (" << p.x << ", " << p.y << ")\n";
+    // Déplacer le point vers la droite
+    deplacer(p, Direction::DROITE);
+    std::cout << "Après déplacement DROITE: (" << p.x << ", " << p.y << ")\n";
+
+    return 0;
+}
+
+
 
 
 
