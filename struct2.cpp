@@ -898,13 +898,6 @@ int main() {
 
     return 0;
 }
-
-
- */
-
-#include <iostream>
-#include <iomanip>
-#include <string>
 #include <cstdint>
 
 using namespace std;
@@ -932,6 +925,59 @@ struct DMS_Latitude {
     Dir_NS direction; // Direction(Nord ou Sud)
     DMS dms; //structure DMS pour la latitude
 };
+
+ */
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <fstream>
+using namespace std;
+
+string remplacerSubstring(const string& original, const string & from, const string & to, ofstream & logFile) {
+    string result = original;
+
+    size_t pos = result.find(from);
+
+    while(pos != string::npos) {
+        logFile<<"Modification à la postion "<<pos
+        <<": remplacement de " << from
+        <<"par "<<to<<"\n";
+
+        result.replace(pos, from.length(), to);
+        pos = result.find(from, pos + to.length());
+    }
+return result;
+
+}
+
+int main() {
+    string chaineOriginale, from, to;
+
+    cout<<"entrez la chaine originale : ";
+    getline(cin, chaineOriginale);
+
+    cout<<"Entrez la sous-chaine à remplacer(from) :";
+    getline(cin, from);
+
+    cout<<"Entrez la nouvelle sous-chaine (to) : " ;
+    getline(cin, to);
+
+    ofstream logfile("logfile.txt", ios::out);
+    if(!logfile.is_open()) {
+        cerr<<"Erreur : impossible d'ouvrir le fichier log."<<endl;
+        return 1;
+    }
+
+    string chaineModifie = remplacerSubstring(chaineOriginale, from, to,logfile    );
+
+    logfile.close();
+
+    cout<<"chaine apres transformation"<< chaineModifie<<endl;
+    return 0;
+}
+
+
 
 
 
