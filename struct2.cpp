@@ -832,8 +832,6 @@ int main() {
 }
 
 
- */
-
 #include <iostream>
 
 enum class Chiffre{ZERO, UN, DEUX, TROIS, QUATRE, CINQ, SIX, SEPT, HUIT, NEUF};
@@ -900,6 +898,42 @@ int main() {
 
     return 0;
 }
+
+
+ */
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <cstdint>
+
+using namespace std;
+using DD = double;
+
+struct Coord_DD {
+    DD latitude;
+    DD longitude;
+};
+
+using Degree = uint8_t;
+using Minute =uint8_t;
+using Second = double;
+
+struct DMS {
+    Degree degree;
+    Minute minute;
+    Second second;
+};
+
+enum class Dir_NS {N, S};
+enum class DIR_EW {E, W};
+
+struct DMS_Latitude {
+    Dir_NS direction; // Direction(Nord ou Sud)
+    DMS dms; //structure DMS pour la latitude
+};
+
+
 
 
 
