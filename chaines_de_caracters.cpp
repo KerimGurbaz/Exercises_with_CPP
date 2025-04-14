@@ -46,7 +46,7 @@ int main() {
 
     return 0;
 }
- */
+
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -87,4 +87,58 @@ int main() {
 
 
     return 0;
+}
+ */
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <cctype>
+using namespace std;
+
+string toLower(string s) {
+    transform(s.begin(), s.end(), s.begin(), ::tolower);
+    return s;
+}
+
+int transformer(string& texte, const string& source, const string& correspondance) {
+    int remplacements = 0;
+
+    string source_minuscules = toLower(source);
+
+    //vérification que les chaines source et correspondance ont la meme taille
+    if(source.length() != correspondance.length()) {
+        cerr<<"Erreur : Les chaines source et correspondance doivent avoir le meme taille "<<endl;
+    return remplacements;
+    }
+
+    //parcours de chaque caractere du texte
+    for(size_t i  =0 ; i<texte.length(); ++i) {
+        char char_texte_minuscule = tolower(texte[i]);
+
+        for (size_t j = 0; j<source_minuscules[j]; ++j) {
+            if(char_texte_minuscule == source_minuscules[j]) {
+                char char_remplacement = correspondance[j];
+
+                if(isupper(texte[i])) {
+                    texte[i] = toupper(char_remplacement);
+                }else {
+                    texte[i] = char_remplacement;
+                }
+                remplacements++;
+                break;
+            }
+        }
+    }
+
+    return remplacements;
+}
+
+int main() {
+    string texte = "Hello World!!";
+    string source ="eo";
+    string correspondance = "XY";
+    int nombre_remplacements = transformer(texte, source, correspondance);
+    cout << "Texte après transformation : " << texte << endl;
+    cout << "Nombre de remplacements : " << nombre_remplacements << endl;
 }
