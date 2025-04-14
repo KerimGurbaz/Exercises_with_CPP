@@ -88,13 +88,6 @@ int main() {
 
     return 0;
 }
- */
-
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <cctype>
-using namespace std;
 
 string toLower(string s) {
     transform(s.begin(), s.end(), s.begin(), ::tolower);
@@ -141,4 +134,54 @@ int main() {
     int nombre_remplacements = transformer(texte, source, correspondance);
     cout << "Texte après transformation : " << texte << endl;
     cout << "Nombre de remplacements : " << nombre_remplacements << endl;
+}
+ */
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <cctype>
+using namespace std;
+
+string toLower(const string& s) {
+    string res = s;
+    for(size_t i = 0; i<res.size(); ++i) {
+        res[i] = tolower(res[i]); //conversion en minuscule;
+    }
+    return res;
+}
+
+string censurer(const string & texte, const string&motInterdit) {
+    string resultat = texte;
+    string lowerResultat = toLower(texte);
+    string motInterditLower = toLower(motInterdit);
+
+    size_t pos = 0;
+
+    while((pos = lowerResultat.find(motInterdit, pos)) != string::npos) {
+        char premier = resultat[pos];
+
+        int longeurRemplacement = (isupper(premier)) ? motInterdit.size() : motInterdit.size()/2 ;
+        string remplacement( longeurRemplacement, '*');
+
+        resultat.replace(pos, motInterdit.size(), remplacement);
+        lowerResultat.replace(pos, motInterdit.size(), string(longeurRemplacement, '*'));
+
+
+        pos += remplacement.size();
+    }
+return resultat;
+}
+int main() {
+
+
+    // Exemple d'utilisation
+    string texte = "Ceci est un SECRET. Un secret doit rester secret. Et Secret n'est pas toléré.";
+    string motInterdit = "Secret";
+
+    cout << "Texte original : " << texte << endl;
+    string texteCensuré = censurer(texte, motInterdit);
+    cout << "Texte censuré : " << texteCensuré << endl;
+
+    return 0;
 }
