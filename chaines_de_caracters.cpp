@@ -135,14 +135,6 @@ int main() {
     cout << "Texte après transformation : " << texte << endl;
     cout << "Nombre de remplacements : " << nombre_remplacements << endl;
 }
- */
-
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <cctype>
-using namespace std;
-
 string toLower(const string& s) {
     string res = s;
     for(size_t i = 0; i<res.size(); ++i) {
@@ -185,3 +177,38 @@ int main() {
 
     return 0;
 }
+ */
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <cctype>
+using namespace std;
+
+int main() {
+    string s;
+    s.assign(4, '\101');
+    cout << '|' << s << '|' << endl;
+
+    // Soru: Bir string'i 10 adet '-' karakteri ile doldurup yazdırın.
+    // (Veri ayıracı olarak kullanılabilir)
+    string ayirac;
+    ayirac.assign(10, '-'); // '-' karakterinin ASCII değeri 45'tir. ayirac.assign(10, 45); de aynı sonucu verir.
+    cout << ayirac << endl;
+
+    string log = "Sistem başlangıcı...";
+    string hata_mesaji = "Kritik hata oluştu.";
+    char kod = 'X';
+
+    log += "\n";       // Yeni satır ekle
+    log += hata_mesaji; // Başka bir string ekle
+    log += " Kod: ";
+    log += kod;        // Tek karakter ekle
+
+    cout << log << endl;
+    /* Çıktı:
+       Sistem başlangıcı...
+       Kritik hata oluştu. Kod: X
+    */
+}
+
