@@ -186,9 +186,8 @@ int main() {
 using namespace std;
 
 int main() {
-    string s;
-    s.assign(4, '\101');
-    cout << '|' << s << '|' << endl;
+    std::string s = 'A' + std::string("BC");
+    std::cout << '|' << s << '|' << std::endl;
 
     // Soru: Bir string'i 10 adet '-' karakteri ile doldurup yazdırın.
     // (Veri ayıracı olarak kullanılabilir)
@@ -210,5 +209,7 @@ int main() {
        Sistem başlangıcı...
        Kritik hata oluştu. Kod: X
     */
+
+
 }
 
