@@ -181,35 +181,41 @@ int main() {
 
 #include <iostream>
 #include <string>
-#include <algorithm>
-#include <cctype>
+
 using namespace std;
 
-int main() {
-    std::string s = 'A' + std::string("BC");
-    std::cout << '|' << s << '|' << std::endl;
+string milieu(const string& str) {
+    size_t longueur = str.size();
+    if(longueur == 0) {
+        return "";
+    }
 
-    // Soru: Bir string'i 10 adet '-' karakteri ile doldurup yazdırın.
-    // (Veri ayıracı olarak kullanılabilir)
-    string ayirac;
-    ayirac.assign(10, '-'); // '-' karakterinin ASCII değeri 45'tir. ayirac.assign(10, 45); de aynı sonucu verir.
-    cout << ayirac << endl;
+    size_t indice_milieu = longueur / 2;
 
-    string log = "Sistem başlangıcı...";
-    string hata_mesaji = "Kritik hata oluştu.";
-    char kod = 'X';
+    if(longueur % 2 != 0) {
+        return string(1, str[indice_milieu]);
+    }else {
+        size_t indice_depart = indice_milieu - 1;
 
-    log += "\n";       // Yeni satır ekle
-    log += hata_mesaji; // Başka bir string ekle
-    log += " Kod: ";
-    log += kod;        // Tek karakter ekle
-
-    cout << log << endl;
-    /* Çıktı:
-       Sistem başlangıcı...
-       Kritik hata oluştu. Kod: X
-    */
-
-
+        return str.substr(indice_depart, 2);
+    }
 }
+
+
+int main() {
+
+        std::cout << "milieu(\"A\") ->     \"" << milieu("A") << "\"" << endl;
+        std::cout << "milieu(\"AB\") ->    \"" << milieu("AB") << "\"" << endl;
+        std::cout << "milieu(\"ABC\") ->   \"" << milieu("ABC") << "\"" << endl;
+        std::cout << "milieu(\"ABCD\") ->  \"" << milieu("ABCD") << "\"" <<endl;
+        std::cout << "milieu(\"ABCDE\") -> \"" << milieu("ABCDE") << "\"" << endl;
+        std::cout << "milieu(\"DataEngineering\") -> \"" << milieu("DataEngineering") << "\"" <<endl;
+        std::cout << "milieu(\"\") ->      \"" << milieu("") << "\"" << endl;
+
+        return 0;
+    }
+
+
+
+
 
