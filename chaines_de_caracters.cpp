@@ -176,10 +176,7 @@ int main() {
     cout << "Texte censuré : " << texteCensuré << endl;
 
     return 0;
-}
- */
-
-#include <iostream>
+}#include <iostream>
 #include <string>
 
 using namespace std;
@@ -214,8 +211,69 @@ int main() {
 
         return 0;
     }
+#include <iostream>
+#include <string>
+#include <stdexcept>
+using namespace std;
+
+string milieu(const string& str) {
+    size_t longueur = str.length();
+    if(longueur == 0) {
+        return "";
+    }
+
+    if(longueur % 2 != 0) {
+        //cas impair:
+        size_t indiceMilieu = longueur / 2 ;
+        return str.substr(indiceMilieu, 1);
+    }else {
+        size_t indiceMilieu1 = (longueur/2) -1 ;
+        return str.substr(indiceMilieu1, 2);
+    }
+}
 
 
+int main() {
+    cout << "Milieu de \"ABC\" : \"" << milieu("ABC") << "\"" << endl;     // Attendu: "B"
+    cout << "Milieu de \"ABCD\" : \"" << milieu("ABCD") << "\"" << endl;   // Attendu: "BC"
+    cout << "Milieu de \"X\" : \"" << milieu("X") << "\"" << endl;         // Attendu: "X"
+    cout << "Milieu de \"AZERTY\" : \"" << milieu("AZERTY") << "\"" << endl; // Attendu: "ER"
+    cout << "Milieu de \"\" : \"" << milieu("") << "\"" << endl;           // Attendu: ""
+    cout << "Milieu de \"PYTHON\" : \"" << milieu("PYTHON") << "\"" << endl; // Attendu: "TH"
+    return 0;
+}
+
+ */
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool contient_centre(const string& texte, const string & mot) {
+    int longueur = texte.length();
+    int longueur_mot = mot.length();
+
+    if(longueur_mot > longueur || longueur_mot == 0) return false;
+
+    string centre ;
+    if(longueur % 2 == 0) {
+       centre = texte.substr(longueur/2 -1 , 2);
+    }else {
+        centre = texte.substr(longueur /2 ,1);
+    }
+
+    return centre == mot;
+}
 
 
+int main() {
+
+    cout<<boolalpha;
+    cout << contient_centre("HELLO", "L") << endl;  // true
+    cout << contient_centre("ABCD", "BC") << endl;  // true
+    cout << contient_centre("ABCD", "AB") << endl;  // false
+    cout << contient_centre("A", "A") << endl;      // true
+    cout << contient_centre("", "A") << endl;       // false
+    return 0;
+}
 
