@@ -242,9 +242,6 @@ int main() {
     cout << "Milieu de \"PYTHON\" : \"" << milieu("PYTHON") << "\"" << endl; // Attendu: "TH"
     return 0;
 }
-
- */
-
 #include <iostream>
 #include <string>
 using namespace std;
@@ -277,3 +274,113 @@ int main() {
     return 0;
 }
 
+ */
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+using namespace std;
+
+int valeurSymbole(char caractere_romain) {
+switch (caractere_romain) {
+    case 'I' : return 1;
+    case 'V' : return 5;
+    case 'X' : return 10;
+    case 'L' : return 50;
+    case 'C' : return 100;
+    case 'D' : return 500;
+    case 'M' : return 1000;
+    default : return 0;
+}
+}
+
+int romainVersEntier(const string& chiffre_romain) {
+    int resultat_total = 0;
+    size_t longueur = chiffre_romain.length();
+
+    //Parcourir la chaine du chiffre romain
+    for(size_t i = 0; i<longueur; ++i) {
+        //obtenir la valeur du symbole actuel
+        int valeur_actuelle = valeurSymbole(chiffre_romain[i]);
+
+        if(i + 1 < longueur) {
+            int valeur_suivante = valeurSymbole(chiffre_romain[i+1]);
+
+            if(valeur_actuelle < valeur_suivante) {
+                resultat_total += (valeur_suivante - valeur_actuelle);
+                i++;
+            }else {
+                resultat_total += valeur_actuelle;
+            }
+        }else {
+            resultat_total += valeur_actuelle;
+        }
+    }
+return resultat_total;
+
+}
+
+int main() {
+
+
+    cout << "Conversion de Chiffres Romains en Entiers :" << endl;
+    cout << "------------------------------------------" << endl;
+
+    // Tableau de cas de test
+    // Chaque paire contient le chiffre romain et sa valeur attendue
+    vector<pair<string, int>> tests = {
+        {"I", 1},
+        {"II", 2},
+        {"III", 3},
+        {"IV", 4},
+        {"V", 5},
+        {"VI", 6},
+        {"VII", 7},
+        {"VIII", 8},
+        {"IX", 9},
+        {"X", 10},
+        {"XI", 11},
+        {"XIV", 14},
+        {"XV", 15},
+        {"XIX", 19},
+        {"XX", 20},
+        {"XL", 40},
+        {"L", 50},
+        {"LX", 60},
+        {"XC", 90},
+        {"C", 100},
+        {"CD", 400},
+        {"D", 500},
+        {"CM", 900},
+        {"M", 1000},
+        {"MCMXCIV", 1994}, // Test complexe
+        {"MMXXIV", 2024},   // Année actuelle (exemple)
+        {"MMMMDCCCLXXXVIII", 4888}, // Exemple de l'énoncé
+        {"MMMCMXCIX", 3999} // Un grand nombre avec beaucoup de soustractions
+    };
+
+    bool tous_reussis = true;
+    for (const auto& test : tests) {
+        string romain = test.first;
+        int attendu = test.second;
+        int obtenu = romainVersEntier(romain);
+
+        cout << "Romain: \"" << romain << "\" -> Attendu: " << attendu << ", Obtenu: " << obtenu;
+        if (obtenu == attendu) {
+            cout << " (REUSSI)" << endl;
+        } else {
+            cout << " (ECHOUE)" << endl;
+            tous_reussis = false;
+        }
+    }
+
+    cout << "------------------------------------------" << endl;
+    if (tous_reussis) {
+        cout << "Tous les tests ont reussi !" << endl;
+    } else {
+        cout << "Au moins un test a echoue." << endl;
+    }
+
+    return 0;
+}
