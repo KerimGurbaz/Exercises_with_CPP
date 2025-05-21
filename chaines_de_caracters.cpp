@@ -274,8 +274,6 @@ int main() {
     return 0;
 }
 
- */
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -384,3 +382,102 @@ int main() {
 
     return 0;
 }
+
+string entierVersRomain(int nombre) {
+    if(nombre <1 || nombre > 4999) {
+        return "Nombre hors limites(1 - 4999)";
+    }
+const vector<pair<int, string>> valeurs_symboles = {
+        {1000, "M"}, {900, "CM"}, {500, "D"}, {400, "CD"},{100, "C"},
+        {90, "XC"}, {50, "L"}, {40, "XL"}, {10, "X"}, {9,"IX"},
+        {5, "V"}, {4, "IV"}, {1, "I"}
+
+};
+
+    string resultat_romain = "";
+
+    for(const auto& val_sym : valeurs_symboles) {
+        int valeur = val_sym.first;
+        const string & symbole = val_sym.second;
+
+        while(nombre >= valeur) {
+            resultat_romain += symbole;
+
+            nombre -= valeur;
+        }
+    }
+
+    return resultat_romain;
+}
+
+
+
+int main() {
+    vector<pair<int, string>> tests_conversion_inverse = {
+        {1, "I"},
+        {3, "III"},
+        {4, "IV"},
+        // ... (diğer test durumları) ...
+        {1994, "MCMXCIV"},
+        {4888, "MMMMDCCCLXXXVIII"}
+    };
+
+    return 0;
+}
+int main() {
+    int nombre_utilisateur_int;
+cout<<"Entrez un nombre entier >= 0 : ";
+    cin>> nombre_utilisateur_int;
+
+    string nombre_en_chaine = to_string(nombre_utilisateur_int);
+
+    cout<<"Nombre saisi : "<<nombre_en_chaine<<endl;
+
+    int nombre_de_chiffres = nombre_en_chaine.length();
+    cout<<"Nombre de chiffre : "<<nombre_de_chiffres<<endl;
+
+    if(nombre_de_chiffres > 0) {
+        string premier_chiffre_str = nombre_en_chaine.substr(0, 1);
+
+        int premier_chiffre_val = stoi(premier_chiffre_str);
+        cout << "Premier chiffre    : " << premier_chiffre_val << endl;
+        string dernier_chiffre_str = nombre_en_chaine.substr(nombre_de_chiffres -1, 1);
+        int dernier_chiffre_val = stoi(dernier_chiffre_str);
+        cout << "Dernier chiffre    : " << dernier_chiffre_val << endl;
+    }else {
+        cout<<"Le nombre n'a pas de chiffres(chaine vide)"<<endl;
+    }
+return 0;
+}
+int main() {
+
+    string nom_complet;
+cout<<"Entrez un prenom et nom separes par un espace : ";
+    getline(cin, nom_complet);
+    cout<<"Nom saisi : "<<nom_complet<<endl;
+
+    size_t position_premier_espace = nom_complet.find(' ');
+    size_t position_dernier_espace = nom_complet.rfind(' ');
+    if(position_premier_espace != string::npos && position_premier_espace == position_dernier_espace) {
+        if(position_premier_espace > 0 && position_premier_espace <nom_complet.length() - 1) {
+            char initiale_prenom = nom_complet.front();
+            char initial_nom = nom_complet[position_premier_espace + 1];
+            cout<<initiale_prenom<<"."<<initial_nom<<endl;
+
+            cout<<"Initiales : "
+                <<static_cast<char>(toupper(initiale_prenom))<<"."
+                <<static_cast<char>(toupper(initial_nom))<<"."<<endl;
+
+        }
+
+    }
+    return 0;
+}
+ */
+
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+
