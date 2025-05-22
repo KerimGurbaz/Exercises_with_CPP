@@ -480,4 +480,39 @@ cout<<"Entrez un prenom et nom separes par un espace : ";
 #include <vector>
 using namespace std;
 
+int main() {
+    string ligne_complet ;
 
+    cout<<"entre votre prenom et nom " ;
+    getline(cin, ligne_complet);
+
+    string prenom_str;
+    string nom_str;
+    string acronyme_str="";
+
+    size_t position_espace = ligne_complet.find(' ');
+
+    if(position_espace != string::npos && position_espace < ligne_complet.length() - 1) {
+        prenom_str = ligne_complet.substr(0,position_espace );
+
+        nom_str = ligne_complet.substr(position_espace + 1);
+
+        cout<<"Votre prenom est : "<<prenom_str<<endl;
+        cout<<"Votre nom est : "<<nom_str<<endl;
+
+        if(!prenom_str.empty() && !nom_str.empty()) {
+            acronyme_str += static_cast<char>(toupper(prenom_str.front()));
+            acronyme_str += static_cast<char>(toupper(nom_str.front()));
+            acronyme_str += static_cast<char>(toupper(nom_str.back()));
+
+            cout<<"Votre acronyme est : "<<acronyme_str<<endl;
+
+        }else {
+            cout<<"Erreur : Prenom ou nom vide apres separation."<<endl;
+        }
+    }else {
+        cout<<"Format d'entree invalide . Assurez vous d'entrer un prenom et un nom separes par espace."<<endl;
+    }
+
+return 0;
+}
