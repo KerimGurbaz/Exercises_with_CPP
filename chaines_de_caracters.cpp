@@ -473,12 +473,6 @@ cout<<"Entrez un prenom et nom separes par un espace : ";
     }
     return 0;
 }
- */
-
-#include <iostream>
-#include <string>
-#include <vector>
-using namespace std;
 
 int main() {
     string ligne_complet ;
@@ -515,4 +509,47 @@ int main() {
     }
 
 return 0;
+}
+
+ */
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm> //algorithm
+#include <cctype> //tolower
+using namespace std;
+
+
+int main() {
+    string nom_utilisateur;
+    string anne_naissance_str;
+    cout<<"Entrez un nom d'utilisateur : "<<endl;
+    cin>>nom_utilisateur;
+    cout<<"Entrez votre anne de naissance (AAAA) : ";
+    cin>>anne_naissance_str;
+    string tag_genere="";
+
+    string partie_nom;
+    if(nom_utilisateur.length() >= 4) {
+        partie_nom = nom_utilisateur.substr(0,4);
+    }else {
+        partie_nom = nom_utilisateur;
+    }
+
+    for(char &c :partie_nom) {
+        c = static_cast<char>(tolower(c));
+    }
+
+    tag_genere += partie_nom;
+    tag_genere += "-";
+
+    if(anne_naissance_str.length() >= 2) {
+        tag_genere += anne_naissance_str.substr(anne_naissance_str.length() - 2, 2);
+    }else {
+        tag_genere += "XX";
+    }
+
+    cout<<"Tag utilisateur genere : "<<tag_genere<<endl;
+    return 0;
 }
