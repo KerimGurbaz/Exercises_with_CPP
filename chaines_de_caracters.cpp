@@ -585,7 +585,6 @@ int main() {
 return 0;
 
 }
- */
 
 #include <iostream>
 #include <string>
@@ -633,3 +632,27 @@ int main() {
     string phrase_inverse = inverserMotsDansPhrase(phrase_utilisateur);
     cout<<"phrase_inverse : "<<phrase_inverse<<endl;
 }
+ */
+
+
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> map_nombres_vus;
+        for(int i = 0; i < nums.size() ; ++i) {
+            int nombre_actuel = nums[i];
+            int complement = target - nombre_actuel;
+
+            if(map_nombres_vus.count(complement)) {
+                return{map_nombres_vus[complement], i};
+            }
+            map_nombres_vus[nombre_actuel]= i;
+        }
+        return {};
+    }
+};
