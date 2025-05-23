@@ -543,15 +543,6 @@ int main() {
     cout<<"Tag utilisateur genere : "<<tag_genere<<endl;
     return 0;
 }
- */
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm> //algorithm
-#include <cctype> //tolower
-using namespace std;
-
 bool estUnPalindrome(const string& mot) {
     int longueur = mot.length();
 
@@ -593,4 +584,52 @@ int main() {
     }
 return 0;
 
+}
+ */
+
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <algorithm> //algorithm
+#include <cctype> //tolower
+using namespace std;
+
+
+string inverserMotsDansPhrase(const string& pharase_originale) {
+    if(pharase_originale.empty()) {
+        return "";
+    }
+
+    stringstream ss(pharase_originale);
+    string mot;
+    vector<string> mots_vecteur;
+
+    while(ss >> mot) {
+        mots_vecteur.push_back(mot);
+    }
+
+    reverse(mots_vecteur.begin(), mots_vecteur.end());
+
+    string phrase_resultat ="";
+    for(size_t i = 0; i < mots_vecteur.size(); ++i) {
+        phrase_resultat += mots_vecteur[i];
+        if(i < mots_vecteur.size() - 1) {
+            phrase_resultat += " ";
+        }
+
+
+    }
+
+return phrase_resultat;
+}
+
+int main() {
+    string phrase_utilisateur;
+    cout<<"Entrez une phrase : ";
+
+    getline(cin, phrase_utilisateur);
+
+    string phrase_inverse = inverserMotsDansPhrase(phrase_utilisateur);
+    cout<<"phrase_inverse : "<<phrase_inverse<<endl;
 }
