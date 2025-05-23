@@ -511,16 +511,6 @@ int main() {
 return 0;
 }
 
- */
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm> //algorithm
-#include <cctype> //tolower
-using namespace std;
-
-
 int main() {
     string nom_utilisateur;
     string anne_naissance_str;
@@ -552,4 +542,55 @@ int main() {
 
     cout<<"Tag utilisateur genere : "<<tag_genere<<endl;
     return 0;
+}
+ */
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm> //algorithm
+#include <cctype> //tolower
+using namespace std;
+
+bool estUnPalindrome(const string& mot) {
+    int longueur = mot.length();
+
+    if(longueur <=1) {
+        return true;
+    }
+
+    int debut = 0;
+    int fin = longueur -1;
+
+
+    while(debut < fin) {
+        if(toupper(mot[debut]) != toupper(mot[fin])) {
+            return false;
+        }
+        debut ++;
+        fin --;
+    }
+    return true; // c'est palindrome
+}
+
+
+int main() {
+    string mot_utilisateur;
+    while(true) {
+        cout<<"Entrez un mot (ou 'quitter' pour sortir ) : ";
+        cin>>mot_utilisateur;
+
+        if(mot_utilisateur == "quitter") {
+            cout<<"Fermeture du programme. Au revoir !"<<endl;
+            break;
+        }
+        if (estUnPalindrome(mot_utilisateur)) {
+            cout << "Le mot '" << mot_utilisateur << "' est un palindrome." << endl;
+        } else {
+            cout << "Le mot '" << mot_utilisateur << "' n'est pas un palindrome." << endl;
+        }
+        cout << endl;
+    }
+return 0;
+
 }
