@@ -632,14 +632,6 @@ int main() {
     string phrase_inverse = inverserMotsDansPhrase(phrase_utilisateur);
     cout<<"phrase_inverse : "<<phrase_inverse<<endl;
 }
- */
-
-
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-using namespace std;
-
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -656,3 +648,66 @@ public:
         return {};
     }
 };
+
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+vector<int>twoSum(vector<int>& nombres, int cible) {
+    for(int i = 0; i<nombres.size(); ++i) {
+        for(int j = i+1; j < nombres.size(); ++j) {
+            if(nombres[i] + nombres[j] ==cible) {
+                return{i,j};
+            }
+        }
+    }
+
+    return {};
+}
+ */
+
+
+#include <iostream>
+using namespace std;
+#include <string>
+
+
+int comterOccurences(const string& texte, const string& motif) {
+    if(motif.empty()) {
+        return 0;
+    }
+
+    int nomre_occurence = 0;
+    size_t pos  = 0;
+
+    while ((pos = texte.find(motif, pos)) != string::npos){
+        nomre_occurence ++;
+        pos += motif.length();
+    }
+return nomre_occurence;
+}
+
+int main() {
+    string chaine_principale;
+    string motif;
+
+    // Demander à l'utilisateur de saisir la chaîne principale.
+    // std::getline est utilisé pour lire toute la ligne, y compris les espaces.
+    cout << "Entrez une chaine de caractères : " << endl;
+    getline(cin, chaine_principale);
+
+    // Demander à l'utilisateur de saisir le motif à rechercher.
+    // cin s'arrête au premier espace, ce qui est souvent suffisant pour un "motif" simple.
+    cout << "Entrez la suite de caractères à compter : " << endl;
+    cin >> motif;
+
+    // Appeler la fonction pour compter les occurrences.
+    int occurrences = comterOccurences(chaine_principale, motif);
+
+    // Afficher le résultat.
+    cout << "La suite de caractères \"" << motif << "\" apparait " << occurrences
+         << " fois dans la chaine \"" << chaine_principale << "\"" << endl;
+
+    return 0;
+}
+
