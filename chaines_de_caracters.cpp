@@ -734,13 +734,6 @@ int main() {
 
     return 0;
 }
- */
-
-
-#include <iostream>
-using namespace std;
-#include <string>
-
 string remplacerPremiereOccurrence(string & texte, string& motif, string& remplacement) {
     if(texte.empty()) {
         return "";
@@ -776,5 +769,57 @@ int main() {
     cout<<texte<<endl;
     cout<<res<<endl;
 
+    array<int, 3> a{1, 2, 3};
+    array<int, 4> b{1, 2, 3, 4};
+    cout << boolalpha << (a < b);
+
     return 0;
+}
+int main() {
+    array<int, 4> a{1, 2, 3};
+    array<int, 4> b{1, 2, 3, -1};
+    array<int, 4> c{1, 2, 3, 1};
+    cout << boolalpha << (a < b) << endl
+         << (a < c) << endl
+         << (b < c);
+    return 0;
+}
+ */
+
+
+#include <iostream>
+#include <string>
+#include <array>
+#include <vector>
+#include <list>
+#include <iomanip>
+using namespace std;
+
+
+template<typename Iterateur>
+void display(Iterateur first,Iterateur last ) {
+    for(Iterateur it = first; it!= last; ++it) {
+        cout<<left<<setw(8)<<*it;
+        cout<<static_cast<const void*>(&(*it))<<endl;
+    }
+    cout<<endl;
+}
+
+int main() {
+    array<int, 3> a{1,2,3};
+    vector<double> v{1.1,2.2,3.3};
+    string s ("HEIG-VD"s);
+    list<string> l { "chien"s, "chat"s, "souris"s};
+
+    cout << "array"   << endl;
+    display(a.cbegin(), a.cend());
+
+    cout << "vector"  << endl;
+    display(v.cbegin(), v.cend());
+
+    cout << "string"  << endl;
+    display(s.cbegin(), s.cend());
+
+    cout << "list"    << endl;
+    display(l.cbegin(), l.cend());
 }
