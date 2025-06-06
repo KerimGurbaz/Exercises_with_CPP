@@ -703,15 +703,6 @@ int main() {
     return 0;
 }
 
-
- */
-
-
-#include <iostream>
-using namespace std;
-#include <string>
-
-
 int compterOccurences(const string& texte, const string& motif_a_chercher) {
     if(motif_a_chercher.empty()) {
         return 0;
@@ -740,6 +731,50 @@ int main() {
 
     cout << "La suite de caractères \"" << motif << "\" apparait " << occurences
              << " fois dans la chaine \"" << chaine_principale << "\"" << endl;
+
+    return 0;
+}
+ */
+
+
+#include <iostream>
+using namespace std;
+#include <string>
+
+string remplacerPremiereOccurrence(string & texte, string& motif, string& remplacement) {
+    if(texte.empty()) {
+        return "";
+    }
+
+
+    size_t position = 0;
+    string resultat = texte;
+    while((position = resultat.find(motif,position )) != string::npos) {
+
+        resultat.replace(position, motif.length(), remplacement);
+        position += remplacement.length();
+
+    }
+
+    return resultat;
+}
+
+int main() {
+    string texte;
+    string motif;
+    string remplacement;
+
+
+    cout<<"entrez une texte: "<<endl;
+    getline(cin, texte);
+    cout<<"entrez un motif : ";
+    cin>>motif;
+    cout<<"entrez une remplacement: "<<endl;
+    cin >>remplacement;
+
+    string res = remplacerPremiereOccurrence(texte, motif, remplacement);
+    cout<<texte<<endl;
+    cout<<res<<endl;
 
     return 0;
 }
