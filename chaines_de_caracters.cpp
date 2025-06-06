@@ -664,14 +664,6 @@ vector<int>twoSum(vector<int>& nombres, int cible) {
 
     return {};
 }
- */
-
-
-#include <iostream>
-using namespace std;
-#include <string>
-
-
 int comterOccurences(const string& texte, const string& motif) {
     if(motif.empty()) {
         return 0;
@@ -711,3 +703,43 @@ int main() {
     return 0;
 }
 
+
+ */
+
+
+#include <iostream>
+using namespace std;
+#include <string>
+
+
+int compterOccurences(const string& texte, const string& motif_a_chercher) {
+    if(motif_a_chercher.empty()) {
+        return 0;
+    }
+    int nombreOccurences = 0;
+    string::size_type position_de_depart = 0;
+
+    while((position_de_depart = texte.find(motif_a_chercher, position_de_depart)) != string::npos) {
+        nombreOccurences++;
+        position_de_depart += motif_a_chercher.length();
+    }
+
+    return nombreOccurences;
+}
+int main() {
+    string chaine_principale;
+    string motif;
+
+    cout<<"Entrez une chaine de caractere : "<<endl;
+    getline(cin,chaine_principale );
+
+    cout<<"entrez une motif : "<<endl;
+    cin>>motif;
+
+    int occurences = compterOccurences(chaine_principale, motif);
+
+    cout << "La suite de caractères \"" << motif << "\" apparait " << occurences
+             << " fois dans la chaine \"" << chaine_principale << "\"" << endl;
+
+    return 0;
+}
