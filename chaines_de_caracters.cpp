@@ -810,14 +810,6 @@ int main() {
     cout << "list"    << endl;
     display(l.cbegin(), l.cend());
 }
- */
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm> // Pour std::min
-using namespace std;
-
 
 class Solution {
 public:
@@ -859,3 +851,70 @@ public:
     }
 
 };
+class Solution {
+public:
+    vector<int> jour_avant_chaleur(const vector<int>& temparatures) {
+        int n = temparatures.size();
+        vector<int> resultat(n,0);
+        stack<int> pile_indices;
+
+        for(int i  =0; i<n; ++i) {
+            while(!pile_indices.empty() && temparatures[i] > temparatures[pile_indices.top()]) {
+                int index_precedent = pile_indices.top();
+                pile_indices.pop();
+                resultat[index_precedent] = i - index_precedent;
+            }
+            pile_indices.push(i);
+        }
+return resultat;
+    }
+};
+
+ */
+#include <iostream>
+#include <string>
+#include <string_view>
+#include <cctype>
+#include <algorithm>
+#include <cassert>
+
+using namespace std;
+size_t transformer(string &s, string from, string_view to) {
+
+    assert(from.size() == to.size());
+
+    size_t nb_of_changes = 0;
+    transform(from.cbegin(), from.cend(), from.begin(), ::toupper);
+
+    for(char& c: s) {
+        size_t p = from.find(::toupper(c));
+
+        if(p != string::npos) {
+            ++nb_of_changes;
+
+            c = isupper(c) ?::toupper(to[p]): ::tolower(to[p]);
+        }
+        return nb_of_changes;
+    }
+
+
+    int main(){
+        string s = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus facilisis at dolor eget congue. Duis in lacus placerat ante consectetur tempor. Aliquam lorem nunc, laoreet quis feugiat accumsan, vulputate vitae justo.";
+
+        // Affiche le texte original avant toute modification pour comparaison.
+        // cout << "Original : " << endl << s << endl << endl;
+
+        // Premier appel : remplace a->h, b->g, c->f, etc.
+        cout << transformer(s, "abcdefgh.!,:", "hgfedcab!.:,") << endl;
+        cout << s << endl;
+
+        // Deuxième appel : applique la transformation inverse pour revenir à l'original.
+        cout << transformer(s, "hgfedcab!.:,", "abcdefgh.!,:") << endl;
+        cout << s << endl;
+
+        return 0;
+    }
+
+
+
+}
