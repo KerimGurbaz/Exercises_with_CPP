@@ -783,20 +783,7 @@ int main() {
          << (a < c) << endl
          << (b < c);
     return 0;
-}
- */
-
-
-#include <iostream>
-#include <string>
-#include <array>
-#include <vector>
-#include <list>
-#include <iomanip>
-using namespace std;
-
-
-template<typename Iterateur>
+}template<typename Iterateur>
 void display(Iterateur first,Iterateur last ) {
     for(Iterateur it = first; it!= last; ++it) {
         cout<<left<<setw(8)<<*it;
@@ -823,3 +810,52 @@ int main() {
     cout << "list"    << endl;
     display(l.cbegin(), l.cend());
 }
+ */
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm> // Pour std::min
+using namespace std;
+
+
+class Solution {
+public:
+
+
+    string robotWithString(string s) {
+        int n = s.length();
+        if(n==0) {
+            return "";
+        }
+
+        vector<char> min_suffix(n+1);
+        min_suffix[n] = 'z'+1;
+
+        for(int i = n-1; i>=0; --i) {
+            min_suffix[i] = min(s[i], min_suffix[i+1]);
+        }
+
+
+        string resultat_papier;
+        string robot_t;
+
+        for(int i = 0; i <n; ++i) {
+            robot_t.push_back(s[i]);
+
+            while(!robot_t.empty() && robot_t.back() <= min_suffix[i+1]) {
+                resultat_papier.push_back(robot_t.back());
+                robot_t.pop_back();
+            }
+        }
+
+        while(!robot_t.empty()) {
+            resultat_papier.push_back(robot_t.back());
+            robot_t.pop_back();
+        }
+
+        return resultat_papier;
+
+    }
+
+};
