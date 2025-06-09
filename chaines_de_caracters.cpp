@@ -869,8 +869,6 @@ public:
 return resultat;
     }
 };
-
- */
 #include <iostream>
 #include <string>
 #include <string_view>
@@ -914,7 +912,73 @@ size_t transformer(string &s, string from, string_view to) {
 
         return 0;
     }
+}
+int transformer(string& s, const string& from, const string&to) {
+    assert(from.size() == to.size());
 
+    int count = 0;
 
+    for(size_t i  =0; i < s.size(); ++i) {
+        char c = s[i];
+        for(size_t j =0 ; j<from.size(); ++j) {
+            if(tolower(c) == tolower(from[j])) {
+                s[i] = isupper(c) ? toupper(to[j]) : tolower(to[j]);
+                ++count;
+                break;
+            }
+        }
+    }
 
+    return count;
+}
+
+int main() {
+    string s = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus facilisis at dolor eget congue. Duis in lacus placerat ante consectetur tempor. Aliquam lorem nunc, laoreet quis feugiat accumsan, vulputate vitae justo.";
+    cout << transformer(s,"abcdefgh.!,:","fghabcde!,:.") << endl;
+    cout << s << endl;
+    cout << transformer(s,"fghabcde!,:.","abcdefgh.!,:") << endl;
+    cout << s << endl;
+}
+ */
+#include <iostream>
+#include <string>
+#include  <cassert>
+#include <algorithm>
+#include <cctype>
+#include <vector>
+using namespace std;
+
+string toLower(const string& str) {
+    string lowerStr = str;
+    transform(lowerStr.begin(), lowerStr.end(), lowerStr.begin(), ::tolower);
+    return lowerStr;
+}
+
+int censureMots(string& s, const vector<string>& motsInterdits) {
+    string sCopy = toLower(s);
+    int totalCensored = 0;
+
+    for(const string& mot : motsInterdits) {
+        string motLower = toLower(mot);
+        size_t pos =0;
+
+        while((pos = sCopy.find(motLower, pos)) != string::npos) {
+            for(size_t i = 0; i<mot.size(); ++i) {
+                s[pos + i] ='*';
+            }
+            ++totalCensored;
+            pos += mot.size();
+        }
+    }
+
+    return  totalCensored;
+}
+int main() {
+    string texte = "Ce texte contient des mots interdits comme Secret et tabou, même SECREt en majuscule.";
+    vector<string> interdits = {"secret", "tabou"};
+
+    int nb = censureMots(texte, interdits);
+    cout << "Nombre de mots censurés : " << nb << endl;
+    cout << "Texte censuré : " << texte << endl;
+    return 0;
 }
