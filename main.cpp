@@ -3,7 +3,8 @@
 #include <vector>
 using namespace std;
 
-template <typename T>
+/*
+* template <typename T>
 void permuterCirculaireDroite( T&a, T&b, T&c) {
     T temp = c;
     c = b;
@@ -36,4 +37,26 @@ int main() {
     cout << "Après : s1=\"" << s1 << "\", s2=\"" << s2 << "\", s3=\"" << s3 << "\"" << endl;
 
     return 0;
+}
+ */
+
+template<typename T>
+void echanger(T& a, T&b) {
+    T temp = b;
+    b  = a;
+    a=temp;
+}
+
+int main() {
+    int n1 = 100, n2 = 200;
+    cout << "Avant échange: n1=" << n1 << ", n2=" << n2 << endl;
+    echanger(n1, n2);
+    cout << "Après échange: n1=" << n1 << ", n2=" << n2 << endl;
+
+    cout << endl;
+
+    string prenom = "Jean", nom = "Dupont";
+    cout << "Avant échange: prenom=\"" << prenom << "\", nom=\"" << nom << "\"" << endl;
+    echanger(prenom, nom);
+    cout << "Après échange: prenom=\"" << prenom << "\", nom=\"" << nom << "\"" << endl;
 }
