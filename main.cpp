@@ -38,7 +38,6 @@ int main() {
 
     return 0;
 }
- */
 
 template<typename T>
 void echanger(T& a, T&b) {
@@ -59,4 +58,57 @@ int main() {
     cout << "Avant échange: prenom=\"" << prenom << "\", nom=\"" << nom << "\"" << endl;
     echanger(prenom, nom);
     cout << "Après échange: prenom=\"" << prenom << "\", nom=\"" << nom << "\"" << endl;
+}
+
+template <typename T>
+void reinitialiser(T&x, T&y, T&z) {
+    x = 0.0;
+    y = 0.0;
+    z = 0.0;
+}
+
+int main() {
+    double pointX = 53.12, pointY= -10.23, pointZ = 83.123;
+
+    cout << "Avant réinitialisation: X=" << pointX << ", Y=" << pointY << ", Z=" << pointZ << endl;
+    reinitialiser(pointX, pointY, pointZ);
+    cout << "Après réinitialisation: X=" << pointX << ", Y=" << pointY << ", Z=" << pointZ << endl;
+
+    return 0;
+
+}
+ */
+
+template <typename T>
+T& min(T& a, T& b) {
+    return a < b ? a : b;
+
+}
+
+template <typename T>
+T& min(T& a, T& b, T& c) {
+    return min(a, min(b,c));
+}
+int main() {
+    cout << "--- Test avec des entiers (int) ---" << endl;
+    int a = 5;
+    int b = 2;
+    int c = 9;
+
+    cout << "Valeurs initiales : a=" << a << ", b=" << b << ", c=" << c << endl;
+
+    // L'appel min(a, b, c) résout en min(a, min(b, c)) -> min(5, ref_to_b) -> ref_to_b
+    cout << "Le minimum est : " << min(a, b, c) << endl; // Affiche 2
+
+    // min(a, b, c) retourne une référence à 'b'. L'instruction devient 'b = 1;'.
+    min(a, b, c) = 1;
+    cout << "Valeurs après 'min(a, b, c) = 1;' : a=" << a << ", b=" << b << ", c=" << c << endl;
+
+    // min(a, b, c) retourne maintenant une référence à 'b' (qui vaut 1).
+    // 'd' devient un alias pour 'b'.
+    int& d = min(a, b, c);
+    d = 0; // Modifier 'd' modifie 'b'.
+    cout << "Valeurs après modification via référence 'd' : a=" << a << ", b=" << b << ", c=" << c << endl;
+
+    return 0;
 }
