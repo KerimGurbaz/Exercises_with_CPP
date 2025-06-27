@@ -76,10 +76,7 @@ int main() {
 
     return 0;
 
-}
- */
-
-template <typename T>
+}template <typename T>
 T& min(T& a, T& b) {
     return a < b ? a : b;
 
@@ -112,3 +109,89 @@ int main() {
 
     return 0;
 }
+template<typename T>
+void clamp(T& valeur, const T& min,const T&max) {
+    valeur = valeur < min ?min : (valeur < max ? valeur : max);
+}
+
+int main() {
+
+    int v1 = -5, min_v = 0, max_v = 100;
+    clamp(v1, min_v, max_v); // v1 devient 0
+    cout << "clamp(-5) dans [0, 100] -> " << v1 << endl;
+    int v2 = 150;
+    clamp(v2, min_v, max_v); // v2 devient 100
+    cout << "clamp(150) dans [0, 100] -> " << v2 << endl;
+
+    int v3 = 50;
+    clamp(v3, min_v, max_v); // v3 reste 50
+    cout << "clamp(50) dans [0, 100] -> " << v3 << endl;
+    return 0;
+}
+#include <algorithm>
+#include <vector>
+int clamp(int &val,const int &a,const int&b) {
+    val = std::clamp(val, a, b);
+    return val;
+}
+template <typename T>
+T clamp_returning_value(T& valeur, const T& min, const T& max) {
+    return valeur <min ? min : (valeur > max ? max :valeur);
+}
+
+int main() {
+    int v1 = -5, min_v = 0, max_v = 100;
+    clamp_returning_value(v1, min_v, max_v); // v1 devient 0
+    cout << "clamp(-5) dans [0, 100] -> " << v1 << endl;
+
+    int v2 = 150;
+    clamp_returning_value(v2, min_v, max_v); // v2 devient 100
+    cout << "clamp(150) dans [0, 100] -> " << v2 << endl;
+}
+#include <algorithm>
+#include <vector>
+using namespace std;
+int main() {
+vector<int> data = {-10, 50,150, 25, 99, 1001};
+int min_val = 0;
+int max_val = 100;
+
+    cout<<"avant"<<endl;
+    for(int value : data) {
+        cout<<value<<" ";
+    }
+    cout<<endl;
+
+transform(data.begin(),data.end(), data.begin(), [](int val) {
+    return val> 100 ? 100 : val;
+});
+
+cout<<"apres"<<endl;
+    for(int val : data) {
+        cout<<val<<" ";   }
+    return 0;
+}
+
+ */
+template<typename T>
+T& select(T& a, T&b, bool select_a) {
+    return select_a ? a : b;
+}
+
+int main() {
+    string str1 = "Hello", str2 = "World";
+    cout << "str1: " << str1 << ", str2: " << str2 << endl;
+
+    // 'ref' devient une référence à str1
+    select(str1, str2, true) = "Bonjour";
+
+    cout << "Après 'select(..., true) = ...' -> str1: " << str1 << ", str2: " << str2 << endl;
+
+    // 'ref' devient une référence à str2
+    select(str1, str2, false) = "Monde";
+
+    cout << "Après 'select(..., false) = ...' -> str1: " << str1 << ", str2: " << str2 << endl;
+
+    return 0;
+}
+
